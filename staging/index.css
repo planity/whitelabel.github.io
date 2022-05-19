@@ -12,7 +12,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-a, h1 {
+.myLinks {
     text-align: left;
     color: white;
     display: flex;
