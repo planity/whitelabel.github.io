@@ -10,7 +10,7 @@ body {
     background: linear-gradient(0, #ee7752, #e73c7e, #23a6d5, #23d5ab, #23d5ab, #23a6d5, #e73c7e, #ee7752);
     background-size: 400% 400%;
     animation: gradient 20s linear infinite;
-    overflow: hidden;
+    overflow-x: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -182,4 +182,15 @@ a:after {
 a:hover:after {
     transform: scaleX(1);
     transform-origin: bottom left;
+}
+
+.myLinks {
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: left;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    margin: 24px
 }
