@@ -139,13 +139,16 @@
 .sub-container {
     border: 10px solid white;
     border-radius: 8px;
-    flex: 1;
+    flex: 0;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     flex-wrap: nowrap;
-
+}
+.sub-container > a {
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 
 .language-text {
@@ -199,8 +202,19 @@
     flex-direction: column;
     margin: 24px
 }
-
 #planity {
     flex: 1;
-    margin-top: 128px
+    margin-top: 128px;
+    animation: 2s fadein 2s backwards;
+}
+
+@keyframes fadein {
+    from {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0vh);
+        opacity: 1;
+    }
 }
