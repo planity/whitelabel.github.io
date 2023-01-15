@@ -5,7 +5,9 @@
     <title>⭐ Planity White Label ⭐️</title>
     <link href="./index.css" rel="stylesheet">
 </head>
-<body class="body">
+<body class="body" id="body">
+
+<div class="background" id="background"></div>
 
 <div class="mainText">
     <span>P</span>
@@ -16,7 +18,6 @@
     <span>T</span>
     <span>Y</span>
 </div>
-
 <div class="container">
     <fieldset class="sub-container">
         <legend class="language-text">français</legend>
@@ -33,3 +34,39 @@
 </div>
 </body>
 </html>
+<script async>
+    const wrapper = document.getElementById("background");
+
+    let columns = 0;
+    let rows = 0;
+
+    const createTile = () => {
+        const tile = document.createElement("div");
+        tile.classList.add("tile");
+        return tile;
+    };
+
+    const createTiles = quantity => {
+        Array.from(Array(quantity)).forEach(() => {
+            wrapper.appendChild(createTile());
+        });
+    };
+
+    const createGrid = () => {
+        wrapper.innerHTML = "";
+
+        const size = document.body.clientWidth > 800 ? 100 : 50;
+
+        columns = Math.floor(document.body.clientWidth / size);
+        rows = Math.floor(document.body.clientHeight / size);
+
+        wrapper.style.setProperty("--columns", columns);
+        wrapper.style.setProperty("--rows", rows);
+
+        createTiles(columns * rows);
+    };
+
+    createGrid();
+
+    window.onresize = () => createGrid();
+</script>

@@ -9,16 +9,18 @@
     -moz-osx-font-smoothing: grayscale;
     background: linear-gradient(0, #ee7752, #e73c7e, #23a6d5, #23d5ab, #23d5ab, #23a6d5, #e73c7e, #ee7752);
     background-size: 400% 400%;
-    animation: gradient 20s linear infinite;
+    animation: gradient 4s linear infinite;
     overflow-x: hidden;
     display: flex;
     justify-content: center;
+    --dark_background: rgb(20, 20, 20);
 }
 
 @font-face {
     font-family: "Pixels";
     src: url("./assets/thirteen-pixels-font.ttf");
 }
+
 @font-face {
     font-family: "ReadablePixels";
     src: url("./assets/rainyhearts.ttf");
@@ -34,6 +36,7 @@
     color: white;
     font-family: "Pixels", system-ui;
     white-space: nowrap;
+    z-index: 10
 }
 
 .mainText span {
@@ -121,7 +124,7 @@
         background-position: 0 0;
     }
     100% {
-        background-position:130% 130%;
+        background-position: 130% 130%;
     }
 }
 
@@ -137,6 +140,8 @@
 }
 
 .sub-container {
+    z-index: 10;
+    background-color: var(--dark_background);
     border: 10px solid white;
     border-radius: 8px;
     flex: 0;
@@ -146,6 +151,7 @@
     justify-content: center;
     flex-wrap: nowrap;
 }
+
 .sub-container > a {
     padding-top: 8px;
     padding-bottom: 8px;
@@ -175,6 +181,7 @@
     position: relative;
     color: white;
 }
+
 .links:after {
     content: '';
     position: absolute;
@@ -187,6 +194,7 @@
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
 }
+
 .links:hover:after {
     transform: scaleX(1);
     transform-origin: bottom left;
@@ -202,6 +210,7 @@
     flex-direction: column;
     margin: 24px
 }
+
 #planity {
     flex: 1;
     margin-top: 128px;
@@ -218,3 +227,43 @@
         opacity: 1;
     }
 }
+
+
+.background {
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: 0;
+    /* var(--rows) and var(--columns) defined in index.html  */
+    grid-template:  repeat(var(--rows), 1fr)/repeat(var(--columns), 1fr);
+}
+
+.tile {
+    position: relative;
+}
+
+.tile:before {
+    content: "";
+    background-color: var(--dark_background);
+    position: absolute;
+    inset: 1px;
+    opacity: 1;
+    transition: opacity 1s;
+    /*animation: opacity-animation 1s forwards;*/
+}
+.tile:hover:before {
+    inset: 100%;
+    opacity: 0;
+    transition: opacity 0s;
+}
+
+
+/*@keyframes opacity-animation  {*/
+/*    from{*/
+/*        opacity: 0;*/
+/*    }*/
+/*    to {*/
+/*        opacity: 1;*/
+/*    }*/
+/*}*/
