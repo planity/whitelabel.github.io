@@ -11,10 +11,12 @@
     background-size: 400% 400%;
     animation: gradient 4s linear infinite;
     overflow-x: hidden;
-    display: flex;
-    justify-content: center;
+    display: grid;
+    place-items: center;
     --dark_background: rgb(20, 20, 20);
 }
+
+
 
 @font-face {
     font-family: "Pixels";
@@ -38,7 +40,9 @@
     white-space: nowrap;
     z-index: 10;
     background: linear-gradient(to bottom, rgb(20, 20, 20, .8) 30%, transparent);
-    padding-bottom: 50px
+    padding-bottom: 50px;
+    user-select: none;
+    pointer-events: none;
 }
 
 .mainText span {
@@ -140,6 +144,11 @@
     padding-left: 42px;
     padding-right: 42px;
 }
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+}
 
 .sub-container {
     z-index: 10;
@@ -204,6 +213,10 @@
 
 .backLinks {
     position: absolute;
+    z-index: 20;
+    background-color: var(--dark_background);
+    padding: 12px;
+    border-radius: 12px;
     top: 0;
     left: 0;
     text-align: left;
@@ -214,9 +227,15 @@
 }
 
 #planity {
+    z-index: 10;
     flex: 1;
-    margin-top: 128px;
+    margin: 32px auto;
+    padding: 16px;
+    border-radius: 16px;
     animation: 2s fadein 2s backwards;
+    background-color: white;
+    max-width: 960px;
+    /*overflow: scroll;*/
 }
 
 @keyframes fadein {
@@ -230,12 +249,13 @@
     }
 }
 
-
+.backgroundContainer {
+    position: absolute;
+}
 .background {
     display: grid;
     width: 100vw;
     height: 100vh;
-    position: absolute;
     z-index: 0;
     /* var(--rows) and var(--columns) defined in index.html  */
     /*noinspection CssUnresolvedCustomProperty*/

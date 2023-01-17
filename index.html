@@ -7,7 +7,10 @@
 </head>
 <body class="body" id="body">
 
+<div class="backgroundContainer">
+
 <div class="background" id="background"></div>
+</div>
 
 <div class="mainText">
     <span>P</span>
@@ -59,7 +62,7 @@
     const createGrid = () => {
         wrapper.innerHTML = "";
 
-        const size = document.body.clientWidth > 800 ? 30 : 50;
+        const size = 50;
 
         columns = Math.floor(document.body.clientWidth / size);
         rows = Math.floor(document.body.clientHeight / size);
