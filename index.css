@@ -2,7 +2,7 @@
     margin: 0;
     height: 100vh;
     width: 100vw;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    font-family: "ReadablePixels", -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -13,6 +13,7 @@
     overflow-x: hidden;
     display: grid;
     place-items: center;
+    grid: auto 1fr/ 1fr;
     --dark_background: rgb(20, 20, 20);
 }
 
@@ -29,12 +30,10 @@
 }
 
 .mainText {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    width: 100%;
+    height: 4rem;
     text-align: center;
-    font-size: 64px;
+    font-size: 3rem;
     color: white;
     font-family: "Pixels", system-ui;
     white-space: nowrap;
@@ -43,17 +42,20 @@
     padding-bottom: 50px;
     user-select: none;
     pointer-events: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
 }
 
 .mainText span {
     display: inline-block;
     position: relative;
     animation-name: spawn-text, de-spawn-text, fade-in;
-    animation-duration: 1s, 1s, 4s;
+    animation-duration: .5s, .5s, 2s;
     animation-iteration-count: 1, 1, 1;
     animation-fill-mode: forwards, forwards, forwards;
     transform: translateX(100vw);
-
 }
 
 .mainText span:nth-child(1) {
@@ -113,15 +115,15 @@
     from {
         opacity: 0;
         transform: translateX(0vw);
-        font-size: 10px;
+        font-size: 1rem;
     }
-    75% {
-        font-size: 128px;
+    50% {
+        font-size: 3.5rem;
     }
     to {
         opacity: 1;
         transform: translateX(0vw);
-        font-size: 64px;
+        font-size: 3rem;
     }
 }
 
@@ -212,6 +214,8 @@
 }
 
 .backLinks {
+    font-family: "ReadablePixels", system-ui;
+    font-size: 1.6em;
     position: absolute;
     z-index: 20;
     background-color: var(--dark_background);
@@ -322,6 +326,8 @@ input::placeholder {
     position: absolute;
 }
 .background {
+    /*perspective: 100px;*/
+    /*perspective-origin: top;*/
     display: grid;
     width: 100vw;
     height: 100vh;
@@ -333,6 +339,7 @@ input::placeholder {
 
 .tile {
     position: relative;
+    /*transform: perspective(100px) rotateX(1deg) ;*/
 }
 
 .tile:before {
