@@ -2,41 +2,22 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>⭐ Planity White Label ⭐️</title>
-    <link href="./index.css" rel="stylesheet">
+    <title>Marque blanche Planity sur le Lab 🧪</title>
+    <link href="../index.css" rel="stylesheet">
 </head>
 <body class="body" id="body">
-
-<div class="backgroundContainer">
-
 <div class="background" id="background"></div>
-</div>
 
-<div class="mainText">
-    <span>P</span>
-    <span>L</span>
-    <span>A</span>
-    <span>N</span>
-    <span>I</span>
-    <span>T</span>
-    <span>Y</span>
-</div>
-<div class="container">
-    <fieldset class="sub-container">
-        <legend class="language-text">français</legend>
-        <a class="links" href="lab/fr.html">Lab</a>
-        <a class="links" href="lab/fr_refonte.html">Lab Refonte</a>
-        <a class="links" href="staging/fr.html">Staging</a>
-        <a class="links" href="production/fr.html">Production</a>
-    </fieldset>
-    <fieldset class="sub-container">
-        <legend class="language-text">Deutsch</legend>
-        <a class="links" href="lab/de.html">Lab</a>
-        <a class="links" href="lab/de_refonte.html">Lab Refonte</a>
-        <a class="links" href="staging/de.html">Staging</a>
-        <a class="links" href="production/de.html">Production</a>
-    </fieldset>
-</div>
+<a class="links backLinks"  href="../index.html">Retour</a>
+<script>
+  window.planity = {
+    // Saco tu connais
+    // https://admin.planitylab.com/businesses/stagingsaco
+    key: "stagingsaco"
+  };
+</script>
+<script src="https://d2skjte8udjqxw.cloudfront.net/widget/lab_refonte/polyfills.latest.js"></script>
+<script src="https://d2skjte8udjqxw.cloudfront.net/widget/lab_refonte/app.latest.js"></script>
 </body>
 </html>
 <script async>
@@ -64,7 +45,7 @@
     const createGrid = () => {
         wrapper.innerHTML = "";
 
-        const size = 50;
+        const size = document.body.clientWidth > 800 ? 30 : 50;
 
         columns = Math.floor(document.body.clientWidth / size);
         rows = Math.floor(document.body.clientHeight / size);
@@ -78,6 +59,7 @@
     createGrid();
 
     let timeout;
+
     window.onresize = function() {
         clearTimeout(timeout);
         timeout = setTimeout(createGrid, 100);
