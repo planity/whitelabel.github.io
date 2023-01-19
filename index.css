@@ -1,3 +1,11 @@
+:root {
+    --dark_background: rgb(20, 20, 20);
+    --perspective_size: 700px;
+}
+
+html {
+    background-color: var(--dark_background);
+}
 .body {
     margin: 0;
     height: 100vh;
@@ -9,12 +17,11 @@
     -moz-osx-font-smoothing: grayscale;
     background: linear-gradient(0, #ee7752, #e73c7e, #23a6d5, #23d5ab, #23d5ab, #23a6d5, #e73c7e, #ee7752);
     background-size: 400% 400%;
-    animation: gradient 4s linear infinite;
+    animation: gradient 20s linear infinite;
     overflow-x: hidden;
     display: grid;
     place-items: center;
     grid: auto 1fr/ 1fr;
-    --dark_background: rgb(20, 20, 20);
 }
 
 
@@ -324,10 +331,12 @@ input::placeholder {
 
 .backgroundContainer {
     position: absolute;
+
+    /* Perspective is fun */
+    /*perspective: 700px;*/
+    /*perspective-origin: top;*/
 }
 .background {
-    /*perspective: 100px;*/
-    /*perspective-origin: top;*/
     display: grid;
     width: 100vw;
     height: 100vh;
@@ -335,11 +344,12 @@ input::placeholder {
     /* var(--rows) and var(--columns) defined in index.html  */
     /*noinspection CssUnresolvedCustomProperty*/
     grid-template:  repeat(var(--rows), 1fr)/repeat(var(--columns), 1fr);
+    /* Perspective is really fun */
+    /*transform: rotateX(10deg) translateZ(1px) rotateX(30deg) scale(1.5);*/
 }
 
 .tile {
     position: relative;
-    /*transform: perspective(100px) rotateX(1deg) ;*/
 }
 
 .tile:before {
@@ -349,8 +359,7 @@ input::placeholder {
     inset: 1px;
     opacity: 1;
     transition: opacity 1s;
-    animation: opacity-animation 2s alternate;
-    animation-iteration-count: 3;
+    animation: opacity-animation 4s alternate 1;
     /* var(--delay) defined in index.html  */
     /*noinspection CssUnresolvedCustomProperty*/
     animation-delay: var(--delay);
@@ -365,7 +374,10 @@ input::placeholder {
 
 @keyframes opacity-animation {
     from {
-        opacity: .1;
+        opacity: 1;
+    }
+    50% {
+        opacity: .6;
     }
     to {
         opacity: 1;

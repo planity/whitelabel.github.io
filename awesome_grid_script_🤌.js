@@ -8,7 +8,7 @@ const createTile = (index) => {
     tile.classList.add("tile");
     const x = (index % columns)
     const y =  Math.floor(index / columns)
-    const delay = (x+y) * 50 + 0;
+    const delay = (x+y) * 50 + (Math.random()*100) + 1000;
     tile.style.setProperty("--delay", `${delay}ms`)
     return tile;
 };
