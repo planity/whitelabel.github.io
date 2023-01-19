@@ -215,6 +215,7 @@
     position: absolute;
     z-index: 20;
     background-color: var(--dark_background);
+    border: 1px #7b7b7b solid;
     padding: 12px;
     border-radius: 12px;
     top: 0;
@@ -239,11 +240,12 @@ body {
 #planity {
     z-index: 10;
     flex: 1;
-    margin: 32px auto;
+    margin: 128px auto;
     padding: 16px;
     border-radius: 16px;
     animation: 2s fadein 2s backwards;
     background-color: white;
+    width: calc(100% - 24px);
     max-width: 960px;
     /*overflow: scroll;*/
     position: absolute;
