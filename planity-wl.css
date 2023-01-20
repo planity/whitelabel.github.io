@@ -2,7 +2,6 @@
     z-index: 10;
     flex: 1;
     margin: 128px auto;
-    padding: 16px;
     border-radius: 16px;
     animation: 2s fadein 2s backwards;
     background-color: white;
