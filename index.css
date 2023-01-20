@@ -248,47 +248,6 @@ html {
 .nav a {
     margin-right: 12px
 }
-body {
-    /*--grey-100: #f79533;*/
-    /*--grey-200: #f37055;*/
-    /*--grey-300: #ef4e7b;*/
-    /*--grey-400: #a166ab;*/
-    /*--grey-500: #5073b8;*/
-    /*--grey-600: #1098ad;*/
-    /*--grey-700: #07b39b;*/
-    /*--grey-800: #6fba82;*/
-    /*--grey-900: #e6e345;*/
-}
-#planity, #planity-account, #planity-appointment, #planity-gift-voucher, #planity-online-shop {
-    z-index: 10;
-    flex: 1;
-    margin: 128px auto;
-    padding: 16px;
-    border-radius: 16px;
-    animation: 2s fadein 2s backwards;
-    background-color: white;
-    width: calc(100% - 24px);
-    max-width: 960px;
-    position: absolute;
-    top: 50px;
-    left: 0;
-    right: 0;
-}
-#planitywl {
-    padding: 16px;
-}
-.planity_appointment_service_cell {
-}
-.planity_appointment_service_small-cell {
-}
-.planity_bookappointment-button-choose {
-}
-.planity_ui_showMoreservices {
-}
-.planity_appointment_days_slider_hour_availability {
-}
-.planity-inputs input {
-}
 
 @keyframes fadein {
     from {
