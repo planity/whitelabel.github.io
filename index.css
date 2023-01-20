@@ -1,19 +1,27 @@
+:root {
+    --dark_background: rgb(20, 20, 20);
+    --perspective_size: 700px;
+}
+
+html {
+    background-color: var(--dark_background);
+}
 .body {
     margin: 0;
     height: 100vh;
     width: 100vw;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    font-family: "ReadablePixels", -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background: linear-gradient(0, #ee7752, #e73c7e, #23a6d5, #23d5ab, #23d5ab, #23a6d5, #e73c7e, #ee7752);
     background-size: 400% 400%;
-    animation: gradient 4s linear infinite;
+    animation: gradient 20s linear infinite;
     overflow-x: hidden;
     display: grid;
     place-items: center;
-    --dark_background: rgb(20, 20, 20);
+    grid: auto 1fr/ 1fr;
 }
 
 
@@ -29,12 +37,10 @@
 }
 
 .mainText {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    width: 100%;
+    height: 4rem;
     text-align: center;
-    font-size: 64px;
+    font-size: 3rem;
     color: white;
     font-family: "Pixels", system-ui;
     white-space: nowrap;
@@ -43,17 +49,20 @@
     padding-bottom: 50px;
     user-select: none;
     pointer-events: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
 }
 
 .mainText span {
     display: inline-block;
     position: relative;
     animation-name: spawn-text, de-spawn-text, fade-in;
-    animation-duration: 1s, 1s, 4s;
+    animation-duration: .5s, .5s, 2s;
     animation-iteration-count: 1, 1, 1;
     animation-fill-mode: forwards, forwards, forwards;
     transform: translateX(100vw);
-
 }
 
 .mainText span:nth-child(1) {
@@ -113,15 +122,15 @@
     from {
         opacity: 0;
         transform: translateX(0vw);
-        font-size: 10px;
+        font-size: 1rem;
     }
-    75% {
-        font-size: 128px;
+    50% {
+        font-size: 3.5rem;
     }
     to {
         opacity: 1;
         transform: translateX(0vw);
-        font-size: 64px;
+        font-size: 3rem;
     }
 }
 
@@ -212,9 +221,12 @@
 }
 
 .backLinks {
+    font-family: "ReadablePixels", system-ui;
+    font-size: 1.6em;
     position: absolute;
     z-index: 20;
     background-color: var(--dark_background);
+    border: 1px #7b7b7b solid;
     padding: 12px;
     border-radius: 12px;
     top: 0;
@@ -250,10 +262,12 @@ body {
 #planity, #planity-account, #planity-appointment, #planity-gift-voucher, #planity-online-shop {
     z-index: 10;
     flex: 1;
-    margin: 32px auto;
+    margin: 128px auto;
+    padding: 16px;
     border-radius: 16px;
     animation: 2s fadein 2s backwards;
     background-color: white;
+    width: calc(100% - 24px);
     max-width: 960px;
     position: absolute;
     top: 50px;
@@ -311,8 +325,7 @@ body {
     inset: 1px;
     opacity: 1;
     transition: opacity 1s;
-    animation: opacity-animation 2s alternate;
-    animation-iteration-count: 3;
+    animation: opacity-animation 4s alternate 1;
     /* var(--delay) defined in index.html  */
     /*noinspection CssUnresolvedCustomProperty*/
     animation-delay: var(--delay);
@@ -327,7 +340,10 @@ body {
 
 @keyframes opacity-animation {
     from {
-        opacity: .1;
+        opacity: 1;
+    }
+    50% {
+        opacity: .6;
     }
     to {
         opacity: 1;
