@@ -1,0 +1,30 @@
+#planity, #planity-account, #planity-appointment, #planity-gift-voucher, #planity-online-shop {
+    z-index: 10;
+    flex: 1;
+    margin: 128px auto;
+    padding: 16px;
+    border-radius: 16px;
+    animation: 2s fadein 2s backwards;
+    background-color: white;
+    width: calc(100% - 24px);
+    max-width: 960px;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+}
+#planitywl {
+    padding: 16px;
+}
+.planity_appointment_service_cell {
+}
+.planity_appointment_service_small-cell {
+}
+.planity_bookappointment-button-choose {
+}
+.planity_ui_showMoreservices {
+}
+.planity_appointment_days_slider_hour_availability {
+}
+.planity-inputs input {
+}
