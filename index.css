@@ -303,6 +303,9 @@ body {
 
 .backgroundContainer {
     position: absolute;
+    /* Perspective is fun */
+    /*perspective: 700px;*/
+    /*perspective-origin: top;*/
 }
 .background {
     display: grid;
@@ -312,6 +315,8 @@ body {
     /* var(--rows) and var(--columns) defined in index.html  */
     /*noinspection CssUnresolvedCustomProperty*/
     grid-template:  repeat(var(--rows), 1fr)/repeat(var(--columns), 1fr);
+    /* Perspective is really fun */
+    /*transform: rotateX(10deg) translateZ(1px) rotateX(30deg) scale(1.5);*/
 }
 
 .tile {
