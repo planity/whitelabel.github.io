@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Marque blanche Planity sur le Lab 🧪</title>
+    <title>Marque blanche Planity sur le Lab - Refonte🧪</title>
     <link href="../index.css" rel="stylesheet">
 </head>
 <body class="body" id="body">
@@ -45,7 +45,7 @@
     const createGrid = () => {
         wrapper.innerHTML = "";
 
-        const size = document.body.clientWidth > 800 ? 30 : 50;
+        const size = 50;
 
         columns = Math.floor(document.body.clientWidth / size);
         rows = Math.floor(document.body.clientHeight / size);
@@ -59,7 +59,6 @@
     createGrid();
 
     let timeout;
-
     window.onresize = function() {
         clearTimeout(timeout);
         timeout = setTimeout(createGrid, 100);

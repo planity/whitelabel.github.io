@@ -225,6 +225,17 @@
     flex-direction: column;
     margin: 24px
 }
+.nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 12px;
+    margin: 24px
+
+}
+.nav a {
+    margin-right: 12px
+}
 body {
     /*--grey-100: #f79533;*/
     /*--grey-200: #f37055;*/
@@ -236,73 +247,33 @@ body {
     /*--grey-800: #6fba82;*/
     /*--grey-900: #e6e345;*/
 }
-#planity {
+#planity, #planity-account, #planity-appointment, #planity-gift-voucher, #planity-online-shop {
     z-index: 10;
     flex: 1;
     margin: 32px auto;
-    padding: 16px;
     border-radius: 16px;
     animation: 2s fadein 2s backwards;
     background-color: white;
     max-width: 960px;
-    /*overflow: scroll;*/
     position: absolute;
-    top: 0;
+    top: 50px;
     left: 0;
     right: 0;
-    /*background-color: rgba(67, 160, 191, 0.7);*/
-    /*border: 10px solid black;*/
-    /*min-height: 3em;*/
-    /*resize: both;*/
-    /*border-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3ClinearGradient id='g' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23cffffe' /%3E%3Cstop offset='25%25' stop-color='%23f9f7d9' /%3E%3Cstop offset='50%25' stop-color='%23fce2ce' /%3E%3Cstop offset='100%25' stop-color='%23ffc1f3' /%3E%3C/linearGradient%3E %3Cpath d='M1.5 1.5 l97 0l0 97l-97 0 l0 -97' stroke-linecap='square' stroke='url(%23g)' stroke-width='3'/%3E %3C/svg%3E")*/
-    /*1;*/
 }
-
+#planitywl {
+    padding: 16px;
+}
 .planity_appointment_service_cell {
-    /*font-family: 'PT Sans';*/
-    /*font-weight: bold;*/
 }
 .planity_appointment_service_small-cell {
-    /*font-style: italic !important;*/
 }
 .planity_bookappointment-button-choose {
-    /*background-color: #43a0bf !important;*/
 }
 .planity_ui_showMoreservices {
-    /*color: #43a0bf !important;*/
 }
 .planity_appointment_days_slider_hour_availability {
-    /*background-color: rgba(67, 160, 191, 0.3) !important;*/
-}
-input {
-    /*background: linear-gradient(*/
-    /*        60deg,*/
-    /*        #f79533,*/
-    /*        #f37055,*/
-    /*        #ef4e7b,*/
-    /*        #a166ab,*/
-    /*        #5073b8,*/
-    /*        #1098ad,*/
-    /*        #07b39b,*/
-    /*        #6fba82*/
-    /*) !important;*/
-    /*color: white !important;*/
-}
-input::placeholder {
-    /*color: white !important;*/
 }
 .planity-inputs input {
-    /*background: linear-gradient(*/
-    /*        60deg,*/
-    /*        #f79533,*/
-    /*        #f37055,*/
-    /*        #ef4e7b,*/
-    /*        #a166ab,*/
-    /*        #5073b8,*/
-    /*        #1098ad,*/
-    /*        #07b39b,*/
-    /*        #6fba82*/
-    /*) !important;*/
 }
 
 @keyframes fadein {
