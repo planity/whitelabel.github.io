@@ -2,20 +2,21 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui,shrink-to-fit=no">
+    <meta name="viewport"
+          content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui,shrink-to-fit=no">
     <title>Marque blanche Planity sur le Lab - Mon compte 🧪</title>
     <link href="../../index.css" rel="stylesheet">
     <link href="../../planity-wl.css" rel="stylesheet">
 </head>
 <body class="body" id="body">
-    <a class="links backLinks"  href="../../index.html">Retour</a>
-    <div class="nav">
-        <a class="links" href="./index.html">Prestations</a>
-        <a class="links" href="./fr_refonte_gift_vouchers.html">Cartes cadeaux</a>
-        <a class="links" href="./fr_refonte_click_and_collect.html">Boutique en ligne</a>
-        <a class="links" href="./fr_refonte_account.html">Mon compte</a>
-    </div>
-    <div id="appointmentContainer"></div>
+<a class="links backLinks" href="../../index.html">Retour</a>
+<div class="nav">
+    <a class="links" href="./index.html">Prestations</a>
+    <a class="links" href="./fr_refonte_gift_vouchers.html">Cartes cadeaux</a>
+    <a class="links" href="./fr_refonte_click_and_collect.html">Boutique en ligne</a>
+    <a class="links" href="./fr_refonte_account.html">Mon compte</a>
+</div>
+<div id="appointmentContainer"></div>
 <script>
     window.planity = {
         // Salon de Moez
@@ -24,7 +25,7 @@
         appointmentContainer: document.getElementById('appointmentContainer'),
         options: {
             appointmentRedirect: () => {
-                window.location = 'http://localhost:63342/planity.github.io/lab/multipage/fr_refonte_account.html';
+                window.location = '/fr_refonte_account.html';
             }
         }
     };

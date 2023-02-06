@@ -202,6 +202,15 @@ html {
     color: white;
 }
 
+.links > span {
+    position: absolute;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-left: 8px;
+    rotate: 15deg;
+}
+
 .links:after {
     content: '';
     position: absolute;

@@ -4,17 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui,shrink-to-fit=no">
-    <title>Planity White Label Lab 🧪</title>
-    <link href="../index.css" rel="stylesheet">
-    <link href="../planity-wl.css" rel="stylesheet">
+    <title>Planity White Label Lab 🧪 - Mein Konto</title>
+    <link href="../../index.css" rel="stylesheet">
+    <link href="../../planity-wl.css" rel="stylesheet">
 </head>
-<body class="body">
-<a class="backLinks" href="../index.html">Zurück</a>
+<body class="body" id="body">
+<div id="accountContainer" style="min-height: unset"></div>
+<a class="links backLinks" href="../../index.html">Zurück</a>
+<div class="nav">
+    <a class="links" href="./index.html">Dienstleistungen</a>
+    <a class="links" href="./de_refonte_gift_vouchers.html">Gutscheine</a>
+    <a class="links" href="./de_refonte_click_and_collect.html">Online-Shop</a>
+    <a class="links" href="./de_refonte_account.html">Mein Konto</a>
+</div>
 <script>
     window.planity = {
         // Sprich über mich da sind Haare
         // https://admin.planitylab.com/businesses/-Msk5irurvdXEe8PZ804
         key: "-Msk5irurvdXEe8PZ804",
+        accountContainer: document.getElementById('accountContainer'),
         options: {
             countryCode: 'DE'
         }
@@ -24,3 +32,4 @@
 <script src="https://d2skjte8udjqxw.cloudfront.net/widget/lab_refonte/app.latest.js"></script>
 </body>
 </html>
+
