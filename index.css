@@ -1,11 +1,11 @@
 :root {
     --dark_background: rgb(20, 20, 20);
     --perspective_size: 700px;
-}
-
-html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     background-color: var(--dark_background);
 }
+
 .body {
     margin: 0;
     height: 100vh;
@@ -13,17 +13,16 @@ html {
     font-family: "ReadablePixels", -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+#root {
+    width: 100%;
+    height: 100%;
     background: linear-gradient(0, #ee7752, #e73c7e, #23a6d5, #23d5ab, #23d5ab, #23a6d5, #e73c7e, #ee7752);
     background-size: 400% 400%;
     animation: gradient 20s linear infinite;
-    overflow-x: hidden;
-    display: grid;
-    place-items: center;
-    grid: auto 1fr/ 1fr;
 }
-
 
 
 @font-face {
@@ -153,6 +152,7 @@ html {
     padding-left: 42px;
     padding-right: 42px;
 }
+
 @media (max-width: 768px) {
     .container {
         flex-direction: column;
@@ -246,6 +246,7 @@ html {
     flex-direction: column;
     margin: 24px
 }
+
 .nav {
     position: absolute;
     top: 0;
@@ -253,80 +254,23 @@ html {
     padding: 12px;
     margin: 12px;
 }
+
 @media (max-width: 768px) {
     .nav {
         display: flex;
         flex-direction: column;
     }
+
     .nav a {
         margin-bottom: 12px
     }
 }
+
 .nav a {
     margin-right: 12px
 }
-/* sorry mais ça fout la merde sur le scroll de mon compte */
-/*@keyframes fadein {*/
-/*    from {*/
-/*        transform: translateY(100vh);*/
-/*        opacity: 0;*/
-/*    }*/
-/*    to {*/
-/*        transform: translateY(0vh);*/
-/*        opacity: 1;*/
-/*    }*/
-/*}*/
 
-.backgroundContainer {
-    position: absolute;
-    /* Perspective is fun */
-    /*perspective: 700px;*/
-    /*perspective-origin: top;*/
-}
-.background {
-    display: grid;
-    width: 100vw;
-    height: 100vh;
-    z-index: 0;
-    /* var(--rows) and var(--columns) defined in index.html  */
-    /*noinspection CssUnresolvedCustomProperty*/
-    grid-template:  repeat(var(--rows), 1fr)/repeat(var(--columns), 1fr);
-    /* Perspective is really fun */
-    /*transform: rotateX(10deg) translateZ(1px) rotateX(30deg) scale(1.5);*/
-}
-
-.tile {
+.content {
     position: relative;
-}
-
-.tile:before {
-    content: "";
-    background-color: var(--dark_background);
-    position: absolute;
-    inset: 1px;
-    opacity: 1;
-    transition: opacity 1s;
-    animation: opacity-animation 4s alternate 1;
-    /* var(--delay) defined in index.html  */
-    /*noinspection CssUnresolvedCustomProperty*/
-    animation-delay: var(--delay);
-}
-
-.tile:hover:before {
-    inset: 100%;
-    opacity: 0;
-    transition: opacity 0s;
-}
-
-
-@keyframes opacity-animation {
-    from {
-        opacity: 1;
-    }
-    50% {
-        opacity: .6;
-    }
-    to {
-        opacity: 1;
-    }
+    z-index: 1;
 }
