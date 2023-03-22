@@ -271,6 +271,9 @@
 }
 
 .content {
+    transition: all 1s ease;
+    margin: auto;
+    max-width: 80%;
     position: relative;
     z-index: 1;
 }

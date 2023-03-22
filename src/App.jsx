@@ -1,39 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { AwesomeGrid } from './awesome_grid/awesome_grid.jsx';
-
-function addScriptToDOM(url) {
-	const script = document.createElement('script');
-	script.src = url;
-	script.async = true;
-	document.body.appendChild(script);
-	return () => document.body.removeChild(script);
-}
+import { Configurator } from './configurator/configurator.jsx';
+import { useWhiteLabel } from './white_label_hook.js';
+import classes from './app.module.css';
+import { ResetButton } from './reset_button.jsx';
 
 export const App = () => {
-	const [wl, setWl] = useState(null);
-	useEffect(() => {
-		if (wl) {
-			window.planity = {
-				key: wl
-			};
+	const { setWhiteLabel } = useWhiteLabel();
+	const onSubmit = ({ businessId, environment, countryCode, refonte }) => {
+		setWhiteLabel({ businessId, environment, countryCode, refonte });
+		setIsCollapsed(true);
+	};
+	const [isCollapsed, setIsCollapsed] = useState(false);
 
-			const destroyPolyfill = addScriptToDOM(
-				'https://d2skjte8udjqxw.cloudfront.net/widget/lab/polyfills.latest.js'
-			);
-			const destroyApp = addScriptToDOM(
-				'https://d2skjte8udjqxw.cloudfront.net/widget/lab/app.latest.js'
-			);
-			return () => {
-				destroyPolyfill();
-				destroyApp();
-			};
-		}
-	}, [wl]);
 	return (
-		<div>
-			<div className='backgroundContainer'>
-				<AwesomeGrid />
-			</div>
+		<div className={classes.container}>
+			<AwesomeGrid />
 
 			<div className='mainText'>
 				<span>P</span>
@@ -45,9 +27,25 @@ export const App = () => {
 				<span>Y</span>
 			</div>
 
-			<div className={'content'}>
-				<button onClick={() => setWl('stagingsaco')}>Click</button>
+			<ResetButton
+				isCollapsed={isCollapsed}
+				onClick={() => setIsCollapsed(false)}
+			/>
+			<div
+				className={'content'}
+				style={{
+					transform: isCollapsed ? 'translateY(-100vh)' : 'translateY(0)'
+				}}
+			>
+				<Configurator onSubmit={onSubmit} />
 			</div>
+			<div
+				style={{
+					transform: !isCollapsed ? 'translateY(100vh)' : 'translateY(0)'
+				}}
+				className={classes.wlContainer}
+				id={'planity-container'}
+			/>
 			{/*<div className="container">*/}
 			{/*    <fieldset className="sub-container">*/}
 			{/*        <legend className="language-text">français</legend>*/}
@@ -71,5 +69,3 @@ export const App = () => {
 		</div>
 	);
 };
-
-const styles = {};

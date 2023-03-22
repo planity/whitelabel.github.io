@@ -3,7 +3,7 @@ import classes from './awesome_grid.module.css';
 
 const SIZE = 50;
 
-export const AwesomeGrid = ({}) => {
+export const AwesomeGrid = () => {
 	const [columns, setColumns] = useState(
 		Math.floor(document.body.clientWidth / SIZE)
 	);

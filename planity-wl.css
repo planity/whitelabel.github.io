@@ -7,10 +7,12 @@
     background-color: white;
     width: calc(100% - 24px);
     max-width: 960px;
-    position: absolute;
-    top: 50px;
-    left: 0;
-    right: 0;
+    min-height: unset
+
+    /*position: relative;*/
+    /*top: 50px;*/
+    /*left: 0;*/
+    /*right: 0;*/
 }
 #planitywl {
     padding: 16px;
