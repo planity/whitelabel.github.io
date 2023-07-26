@@ -1,5 +1,6 @@
 import React, { useReducer } from 'react';
 import classes from './configurator.module.css';
+import { useLocalStorage } from '../../providers/local_storage_provider.jsx';
 
 function reducer(state, action) {
 	switch (action.type) {
@@ -16,43 +17,61 @@ function reducer(state, action) {
 	}
 }
 
-export const Configurator = ({ onSubmit }) => {
-	const initialState = {
-		businessId: '',
-		environment: 'lab',
-		countryCode: 'FR',
-		refonte: false
+function initialState({ businessId, environment, countryCode, refonte }) {
+	return {
+		businessId: businessId || '',
+		environment: environment || 'lab',
+		countryCode: countryCode || 'FR',
+		refonte: !!refonte || false
 	};
+}
+
+export const Configurator = ({ onSubmit }) => {
+	const localStorageInitialState = useLocalStorage();
 	const [{ businessId, environment, countryCode, refonte }, dispatch] =
-		useReducer(reducer, initialState, x => x);
+		useReducer(reducer, localStorageInitialState, initialState);
+	console.log('reducer', { businessId, environment, countryCode, refonte });
 	const onClick = e => {
 		e.preventDefault();
-		onSubmit({ businessId, environment, countryCode, refonte });
+		localStorage.setItem('businessId', businessId);
+		localStorage.setItem('environment', environment);
+		localStorage.setItem('countryCode', countryCode);
+		refonte
+			? localStorage.setItem('refonte', refonte)
+			: localStorage.removeItem('refonte');
+		const _businessId = localStorage.getItem('businessId') || '';
+		const _environment = localStorage.getItem('environment') || 'lab';
+		const _countryCode = localStorage.getItem('countryCode') || 'FR';
+		const _refonte = !!localStorage.getItem('refonte') || false;
+		console.log({ _businessId, _environment, _countryCode, _refonte });
+		onSubmit();
 	};
-	console.log({ businessId, environment, countryCode, refonte });
+
 	return (
 		<fieldset className={classes.container}>
 			<legend className={classes.title}>Configurator</legend>
 			<form className={classes.form} onSubmit={onSubmit}>
-				<label htmlFor={'env'}>
+				<label className={classes.label} htmlFor={'environment'}>
 					<p>Environnement</p>
 					<select
+						className={classes.input}
 						onChange={e =>
 							dispatch({
 								type: 'ENVIRONMENT_HAS_CHANGED',
 								payload: e.target.value
 							})
 						}
-						name={'env'}
+						name={'environment'}
 					>
 						<option value={'lab'}>Lab</option>
 						<option value={'staging'}>Staging</option>
 						<option value={'production'}>Production</option>
 					</select>
 				</label>
-				<label htmlFor={'businessId'}>
+				<label className={classes.label} htmlFor={'businessId'}>
 					<p>Business Id</p>
 					<input
+						className={classes.input}
 						type='text'
 						name='businessId'
 						list='businessIds'
@@ -72,9 +91,10 @@ export const Configurator = ({ onSubmit }) => {
 					</datalist>
 				</label>
 
-				<label htmlFor={'countryCode'}>
+				<label className={classes.label} htmlFor={'countryCode'}>
 					<p>Country Code</p>
 					<select
+						className={classes.input}
 						onChange={e =>
 							dispatch({
 								type: 'COUNTRY_CODE_HAS_CHANGED',
@@ -89,9 +109,10 @@ export const Configurator = ({ onSubmit }) => {
 						<option value={'DE'}>Allemagne</option>
 					</select>
 				</label>
-				<label htmlFor={'refonte'}>
+				<label className={classes.label} htmlFor={'refonte'}>
 					<p>Refonte</p>
 					<input
+						className={classes.input}
 						type={'checkbox'}
 						onChange={e =>
 							dispatch({
@@ -99,12 +120,14 @@ export const Configurator = ({ onSubmit }) => {
 								payload: e.target.checked
 							})
 						}
-						value={refonte}
+						checked={refonte}
 						name={'refonte'}
 					/>
 				</label>
 
-				<button onClick={onClick}>Go !</button>
+				<button className={classes.submitButton} onClick={onClick}>
+					Go !
+				</button>
 			</form>
 		</fieldset>
 	);

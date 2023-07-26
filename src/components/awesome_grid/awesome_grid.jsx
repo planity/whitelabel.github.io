@@ -1,31 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import classes from './awesome_grid.module.css';
+import { useWindowHeight } from '../../hooks/use_window_height.js';
+import { useWindowWidth } from '../../hooks/use_window_width.js';
 
 const SIZE = 50;
 
 export const AwesomeGrid = () => {
-	const [columns, setColumns] = useState(
-		Math.floor(document.body.clientWidth / SIZE)
-	);
-	const [rows, setRows] = useState(
-		Math.floor(document.body.clientHeight / SIZE)
-	);
-
-	useEffect(() => {
-		// TODO Debounce
-		const onResize = () => {
-			setColumns(Math.floor(document.body.clientWidth / SIZE));
-			setRows(Math.floor(document.body.clientHeight / SIZE));
-		};
-		window.addEventListener('resize', onResize);
-		return () => window.removeEventListener('resize', onResize);
-	}, []);
+	const { height } = useWindowHeight();
+	const { width } = useWindowWidth();
+	const columns = Math.floor(width / SIZE);
+	const rows = Math.floor(height / SIZE);
 
 	return (
 		<div className={classes.backgroundContainer}>
 			<div
 				className={classes.background}
 				style={{
+					height,
 					gridTemplate: `repeat(${rows}, 1fr)/repeat(${columns}, 1fr)`
 				}}
 			>

@@ -3,13 +3,17 @@
     /* Perspective is fun */
     /*perspective: 700px;*/
     /*perspective-origin: top;*/
+    min-height: 100vh;
+
 }
 
 
 .background {
     display: grid;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
+
+    /*height: 100vh;*/
     z-index: 0;
     /* Perspective is really fun */
     /*transform: rotateX(10deg) translateZ(1px) rotateX(30deg) scale(1.5);*/
