@@ -1,0 +1,84 @@
+
+.resetButton {
+    --border-size: 1px;
+    cursor: pointer;
+    /*border-radius: 18px;*/
+    /*width: 100%;*/
+    /*outline: 1px solid white;*/
+    padding: 10px 20px;
+    border: var(--border-size) dotted transparent;
+    /*background-color: black;*/
+    color: white;
+    /*transition: all 1s ease;*/
+    /*background-image: linear-gradient(to right, rgb(255 255 255 / 0.5), rgb(255 255 255 / 0.5)),*/
+    /*conic-gradient(*/
+    /*        from 45deg,*/
+    /*        #d53e33 0deg 90deg,*/
+    /*        #fbb300 90deg 180deg,*/
+    /*        #377af5 180deg 270deg,*/
+    /*        #399953 270deg 360deg*/
+    /*);*/
+    /*!* Manually add or offset the size of the border where needed *!*/
+    /*background-position: calc(var(--border-size) * -1) calc(var(--border-size) * -1);*/
+    /*background-size: calc(var(--border-size) * 2 + 100%) calc(var(--border-size) * 2 + 100%);*/
+    /*background-clip:*/
+    /*        padding-box, !* Clip white semi-transparent to the padding-box *!*/
+    /*        border-box !* Clip colored boxes to the border-box (default) *!*/;
+}
+
+.enabled {
+    position: relative;
+    /*outline: 1px solid green;*/
+}
+
+.disabled {
+    /*outline: 1px solid white;*/
+}
+
+/*.enabled {*/
+/*    position: relative;*/
+
+/*    &::before {*/
+/*        content: '';*/
+/*        position: absolute;*/
+/*        left: -50%;*/
+/*        top: -50%;*/
+/*        width: 200%;*/
+/*        height: 200%;*/
+/*        background: conic-gradient(transparent, rgba(168, 239, 255, 1), transparent 30%);*/
+/*        animation: rotate 4s linear infinite;*/
+/*    }*/
+/*}*/
+/*@keyframes rotate {*/
+/*    100% {*/
+/*        transform: rotate(1turn);*/
+/*    }*/
+/*}*/
+.enabled::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid gold;
+    transition: all .5s;
+    animation: clippath 3s infinite linear;
+    border-radius: 10px;
+}
+@keyframes clippath {
+    0%,
+    100% {
+        clip-path: inset(0 0 98% 0);
+    }
+
+    25% {
+        clip-path: inset(0 98% 0 0);
+    }
+    50% {
+        clip-path: inset(98% 0 0 0);
+    }
+    75% {
+        clip-path: inset(0 0 0 98%);
+    }
+}

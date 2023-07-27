@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { AwesomeGrid } from '../awesome_grid/awesome_grid.jsx';
 import { Configurator } from '../configurator/configurator.jsx';
 import classes from './app.module.css';
@@ -43,7 +43,7 @@ export const App = () => {
 	const { height } = useWindowHeight();
 
 	useEffect(() => {
-		if (!!businessId && !!environment && !!countryCode) {
+		if (!!businessId && !!environment && [false, true].includes(refonte)) {
 			setWhiteLabel({ businessId, environment, countryCode, refonte });
 		}
 	}, [businessId, environment, countryCode, refonte]);

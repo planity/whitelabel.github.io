@@ -1,9 +1,4 @@
-import React, {
-	createContext,
-	useContext,
-	useMemo,
-	useSyncExternalStore
-} from 'react';
+import React, { createContext, useContext, useSyncExternalStore } from 'react';
 
 const LocalStorageContext = createContext({});
 
@@ -16,19 +11,14 @@ export function LocalStorageContextProvider({ children }) {
 	const environment = useSyncExternalStore(subscribe, () =>
 		localStorage.getItem('environment')
 	);
-	const countryCode = useSyncExternalStore(subscribe, () =>
-		localStorage.getItem('countryCode')
-	);
 	const refonte = useSyncExternalStore(subscribe, () =>
-		localStorage.getItem('refonte')
+		JSON.parse(localStorage.getItem('refonte'))
 	);
 	const state = {
 		businessId,
 		environment,
-		countryCode,
 		refonte
 	};
-	console.log('Local storage', state);
 	return (
 		<LocalStorageContext.Provider value={state}>
 			{children}

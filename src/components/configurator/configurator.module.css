@@ -1,23 +1,27 @@
 .container {
+    width: 100%;
+    margin: auto;
+    max-width: min(1180px, 95%);
+    
     color: white;
     z-index: 100;
     border-radius: 8px;
-    flex: 0;
     font-size: 1.4rem;
     padding: 12px;
     background-color: rgb(35, 35, 39);
 
     position: fixed;
-    bottom: 40px;
-    width: 80vw;
+    bottom: 16px;
+    left: 0;
+    right: 0;
 }
 
 .form {
     display: grid;
     place-items: center flex-start;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: min-content min-content min-content auto;
     grid-auto-rows: 1fr;
-    padding: 12px;
+    padding: 0 12px;
     gap: 22px;
 }
 
@@ -37,10 +41,12 @@
     border-radius: 8px;
 }
 .label {
+    min-width: 200px;
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 12px;
+    font-size: 16px;
 }
 .input {
     appearance: auto;
@@ -49,6 +55,7 @@
     height: 22px;
     border-radius: 2px;
     width: 100%;
+    font:inherit;
 }
 
 .input::placeholder{
@@ -57,6 +64,7 @@
 }
 
 .submitButton {
+    place-self: self-end;
     color: white;
     cursor: pointer;
     border: none;

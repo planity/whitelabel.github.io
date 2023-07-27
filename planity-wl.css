@@ -4,10 +4,10 @@
     margin: 128px auto;
     border-radius: 16px;
     animation: 2s fadein 2s backwards;
-    background-color: white;
+    background-color: rgba(190, 190, 190, 0.96);
     width: calc(100% - 24px);
     max-width: 960px;
-    min-height: unset
+    min-height: unset;
 
     /*position: relative;*/
     /*top: 50px;*/

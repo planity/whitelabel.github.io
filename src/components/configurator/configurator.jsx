@@ -21,7 +21,6 @@ function initialState({ businessId, environment, countryCode, refonte }) {
 	return {
 		businessId: businessId || '',
 		environment: environment || 'lab',
-		countryCode: countryCode || 'FR',
 		refonte: !!refonte || false
 	};
 }
@@ -30,20 +29,12 @@ export const Configurator = ({ onSubmit }) => {
 	const localStorageInitialState = useLocalStorage();
 	const [{ businessId, environment, countryCode, refonte }, dispatch] =
 		useReducer(reducer, localStorageInitialState, initialState);
-	console.log('reducer', { businessId, environment, countryCode, refonte });
+
 	const onClick = e => {
 		e.preventDefault();
 		localStorage.setItem('businessId', businessId);
 		localStorage.setItem('environment', environment);
-		localStorage.setItem('countryCode', countryCode);
-		refonte
-			? localStorage.setItem('refonte', refonte)
-			: localStorage.removeItem('refonte');
-		const _businessId = localStorage.getItem('businessId') || '';
-		const _environment = localStorage.getItem('environment') || 'lab';
-		const _countryCode = localStorage.getItem('countryCode') || 'FR';
-		const _refonte = !!localStorage.getItem('refonte') || false;
-		console.log({ _businessId, _environment, _countryCode, _refonte });
+		localStorage.setItem('refonte', JSON.stringify(!!refonte));
 		onSubmit();
 	};
 
@@ -52,7 +43,6 @@ export const Configurator = ({ onSubmit }) => {
 			<legend className={classes.title}>Configurator</legend>
 			<form className={classes.form} onSubmit={onSubmit}>
 				<label className={classes.label} htmlFor={'environment'}>
-					<p>Environnement</p>
 					<select
 						className={classes.input}
 						onChange={e =>
@@ -63,13 +53,15 @@ export const Configurator = ({ onSubmit }) => {
 						}
 						name={'environment'}
 					>
+						<option value={''} disabled>
+							Environnement
+						</option>
 						<option value={'lab'}>Lab</option>
 						<option value={'staging'}>Staging</option>
 						<option value={'production'}>Production</option>
 					</select>
 				</label>
 				<label className={classes.label} htmlFor={'businessId'}>
-					<p>Business Id</p>
 					<input
 						className={classes.input}
 						type='text'
@@ -82,6 +74,7 @@ export const Configurator = ({ onSubmit }) => {
 								payload: e.currentTarget.value
 							})
 						}
+						placeholder={'Business Id'}
 					/>
 					<datalist id='businessIds'>
 						<option value={'saco'} label={'Saco'}>
@@ -90,27 +83,7 @@ export const Configurator = ({ onSubmit }) => {
 						<option value='-LqHElRfcHDuDZllMFy6'>A l'arrache</option>
 					</datalist>
 				</label>
-
-				<label className={classes.label} htmlFor={'countryCode'}>
-					<p>Country Code</p>
-					<select
-						className={classes.input}
-						onChange={e =>
-							dispatch({
-								type: 'COUNTRY_CODE_HAS_CHANGED',
-								payload: e.target.value
-							})
-						}
-						value={countryCode}
-						name={'countryCode'}
-					>
-						<option value={'FR'}>France</option>
-						<option value={'BE'}>Belgique</option>
-						<option value={'DE'}>Allemagne</option>
-					</select>
-				</label>
 				<label className={classes.label} htmlFor={'refonte'}>
-					<p>Refonte</p>
 					<input
 						className={classes.input}
 						type={'checkbox'}

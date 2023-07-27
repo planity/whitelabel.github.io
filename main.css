@@ -5,6 +5,7 @@
     -moz-osx-font-smoothing: grayscale;
     background-color: var(--dark_background);
     font-size: 1rem;
+    /*--white: rgba(255, 255, 255, .5) !important;*/
 }
 
 .body {
@@ -271,9 +272,8 @@
 }
 
 .content {
-    margin: auto;
-    max-width: 80%;
-    /*position: absolute;*/
-    /*bottom: 40px;*/
+    /*margin: auto;*/
+    width: 100%;
+    height: auto;
     z-index: 1;
 }
