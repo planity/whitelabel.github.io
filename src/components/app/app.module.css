@@ -7,3 +7,15 @@
     position: relative;
     transition: all 1s ease;
 }
+
+.link {
+    display: flex;
+    position: relative;
+    color: white;
+    background-color: black;
+    width: 200px;
+    height: 40px;
+    z-index: 1000;
+pointer-events: all
+;
+}

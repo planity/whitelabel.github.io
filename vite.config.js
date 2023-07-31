@@ -1,7 +1,16 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { resolve } from 'path';
 
-// https://vitejs.dev/config/
 export default defineConfig({
-	plugins: [react()]
+	plugins: [react()],
+	build: {
+		rollupOptions: {
+			input: {
+				multi_account: resolve(__dirname, 'multi_account.html'),
+				lol2: resolve(__dirname, 'pages', 'lol.html'),
+				index: resolve(__dirname, 'pages/index.html')
+			}
+		}
+	}
 });

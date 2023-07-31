@@ -1,7 +1,7 @@
 #planity, #planity-account, #planity-appointment, #planity-gift-voucher, #planity-online-shop {
     z-index: 10;
     flex: 1;
-    margin: 128px auto;
+    margin: 32px auto;
     border-radius: 16px;
     animation: 2s fadein 2s backwards;
     background-color: rgba(190, 190, 190, 0.96);
