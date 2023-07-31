@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui,shrink-to-fit=no">
+    <title>Marque blanche Planity sur le Lab - Cartes cadeaux 🧪</title>
+    <link href="../../../index.css" rel="stylesheet">
+    <link href="../../../planity-wl.css" rel="stylesheet">
+</head>
+<body class="body" id="body">
+<a class="links backLinks" href="../../../index.html">Retour</a>
+<div class="nav">
+    <a class="links" href="./index.html">Prestations</a>
+    <a class="links" href="./fr_refonte_gift_vouchers.html">Cartes cadeaux</a>
+    <a class="links" href="./fr_refonte_click_and_collect.html">Boutique en ligne</a>
+    <a class="links" href="./fr_refonte_account.html">Mon compte</a>
+</div>
+<div id="giftVoucherContainer"></div>
+<script>
+    window.planity = {
+        // https://admin.planitylab.com/businesses/-NURiE6pwIJY0W2A02Yx
+        key: "-NURiE6pwIJY0W2A02Yx",
+        giftVoucherContainer: document.getElementById('giftVoucherContainer'),
+        options: {
+            giftVoucherRedirect: () => {
+                window.location = './fr_refonte_account.html';
+            }
+        }
+    };
+</script>
+<script src="https://d2skjte8udjqxw.cloudfront.net/widget/lab_refonte/polyfills.latest.js"></script>
+<script src="https://d2skjte8udjqxw.cloudfront.net/widget/lab_refonte/app.latest.js"></script>
+</body>
+</html>

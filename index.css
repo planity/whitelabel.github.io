@@ -152,6 +152,8 @@ html {
     flex: 1;
     padding-left: 42px;
     padding-right: 42px;
+    width: 100%;
+    max-width: 96vw;
 }
 @media (max-width: 768px) {
     .container {
@@ -164,10 +166,10 @@ html {
     background-color: var(--dark_background);
     border: 10px solid white;
     border-radius: 8px;
-    flex: 0;
+    flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     flex-wrap: nowrap;
 }
@@ -200,6 +202,7 @@ html {
     text-decoration: none;
     position: relative;
     color: white;
+    white-space: nowrap;
 }
 
 .links > span {
