@@ -10,12 +10,35 @@
 
 .link {
     display: flex;
-    position: relative;
     color: white;
     background-color: black;
-    width: 200px;
-    height: 40px;
-    z-index: 1000;
-pointer-events: all
+    /*width: 200px;*/
+    /*height: 40px;*/
 ;
+}
+
+.wlMainContainer {
+    position: relative;
+
+    /*z-index: 10;*/
+    flex: 1;
+    /*margin: 32px auto;*/
+    /*border-radius: 16px;*/
+    /*animation: 2s fadein 2s backwards;*/
+    /*background-color: rgba(190, 190, 190, 0.96);*/
+    /*width: calc(100% - 24px);*/
+    /*max-width: 960px;*/
+    /*min-height: unset;*/
+
+}
+
+.content {
+    position: relative;
+    display: grid;
+    background-color: gray;
+    grid: 1fr/1fr;
+    margin: auto;
+    width: 100%;
+    max-width: 90vw;
+    height: auto;
 }

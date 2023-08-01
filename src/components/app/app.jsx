@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { AwesomeGrid } from '../awesome_grid/awesome_grid.jsx';
 import { Configurator } from '../configurator/configurator.jsx';
 import classes from './app.module.css';
 import { ResetButton } from '../reset_button/reset_button.jsx';
 import { useLocalStorage } from '../../providers/local_storage_provider.jsx';
 import { useWindowHeight } from '../../hooks/use_window_height.js';
+import { MainText } from '../main_text/main_text.jsx';
+import { MpaButtons } from '../mpa_buttons/mpa_buttons.jsx';
 
 const setWhiteLabel = ({ businessId, environment, countryCode, refonte }) => {
 	const { moduleType } = window;
@@ -41,6 +43,10 @@ function addScriptToDOM(url) {
 
 export const App = () => {
 	const { businessId, environment, countryCode, refonte } = useLocalStorage();
+	const hasAWidgetSetUp = useMemo(
+		() => !!businessId && !!environment && [false, true].includes(refonte),
+		[businessId, environment, countryCode, refonte]
+	);
 	const onSubmit = () => {
 		setTimeout(() => {
 			location.reload();
@@ -49,27 +55,15 @@ export const App = () => {
 	const { height } = useWindowHeight();
 
 	useEffect(() => {
-		if (!!businessId && !!environment && [false, true].includes(refonte)) {
+		if (hasAWidgetSetUp) {
 			setWhiteLabel({ businessId, environment, countryCode, refonte });
 		}
-	}, [businessId, environment, countryCode, refonte]);
+	}, [hasAWidgetSetUp, businessId, environment, countryCode, refonte]);
 	return (
 		<div className={classes.container} style={{ height }}>
 			<AwesomeGrid />
 
-			{!!businessId &&
-			!!environment &&
-			[false, true].includes(refonte) ? null : (
-				<div className='mainText'>
-					<span>P</span>
-					<span>L</span>
-					<span>A</span>
-					<span>N</span>
-					<span>I</span>
-					<span>T</span>
-					<span>Y</span>
-				</div>
-			)}
+			{hasAWidgetSetUp && <MainText />}
 
 			<ResetButton
 				onClick={() => {
@@ -77,18 +71,16 @@ export const App = () => {
 					location.reload();
 				}}
 			/>
-			<div className={'content'}>
-				<a className={classes.link} href={'./multi_account.html'}>
-					Mon compte
-				</a>
-				<a className={classes.link} href={'./multi_appointment.html'}>
-					RDV
-				</a>
+			<div className={classes.content}>
+				<div className={classes.wlMainContainer}>
+					<MpaButtons />
+
+					<div className={classes.wlContainer} id={'planity-container'} />
+					<div className={classes.wlContainer} id={'accountContainer'} />
+					<div className={classes.wlContainer} id={'appointmentContainer'} />
+				</div>
 				<Configurator onSubmit={onSubmit} />
 			</div>
-			<div className={classes.wlContainer} id={'planity-container'} />
-			<div className={classes.wlContainer} id={'accountContainer'} />
-			<div className={classes.wlContainer} id={'appointmentContainer'} />
 		</div>
 	);
 };

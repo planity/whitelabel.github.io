@@ -1,13 +1,13 @@
 #planity, #planity-account, #planity-appointment, #planity-gift-voucher, #planity-online-shop {
-    z-index: 10;
-    flex: 1;
-    margin: 32px auto;
-    border-radius: 16px;
-    animation: 2s fadein 2s backwards;
-    background-color: rgba(190, 190, 190, 0.96);
-    width: calc(100% - 24px);
-    max-width: 960px;
-    min-height: unset;
+    /*z-index: 10;*/
+    /*flex: 1;*/
+    /*margin: 32px auto;*/
+    /*border-radius: 16px;*/
+    /*animation: 2s fadein 2s backwards;*/
+    /*background-color: rgba(190, 190, 190, 0.96);*/
+    /*width: calc(100% - 24px);*/
+    /*max-width: 960px;*/
+    /*min-height: unset;*/
 
     /*position: relative;*/
     /*top: 50px;*/
