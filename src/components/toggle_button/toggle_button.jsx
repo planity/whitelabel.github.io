@@ -1,19 +1,15 @@
 import classes from './toggle_button.module.css';
 import React, { useState } from 'react';
 
-export const ToggleButton = ({ onClick }) => {
-	const [enabled, setEnabled] = useState(false);
+export const ToggleButton = ({ enabled, onClick }) => {
 	return (
 		<div
 			className={`${classes.resetButton} ${
 				enabled ? classes.enabled : classes.disabled
 			}`}
-			onClick={() => {
-				setEnabled(x => !x);
-				onClick();
-			}}
+			onClick={() => onClick(!enabled)}
 		>
-			{enabled ? 'Activé' : 'Désactivé'}
+			{enabled ? 'Refonte activée' : 'Refonte désactivée'}
 		</div>
 	);
 };

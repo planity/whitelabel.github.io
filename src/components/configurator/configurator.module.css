@@ -52,21 +52,23 @@
 }
 .input {
     appearance: auto;
-    color: black;
     padding: 4px;
     height: 22px;
-    border-radius: 2px;
     width: 100%;
     font:inherit;
+    background-color: transparent;
+    color: white;
+    border-bottom: 1px solid white;
+    border-radius: 0;
 }
 
 .input::placeholder{
-    color: black;
+    color: white;
 
 }
 
 .submitButton {
-    place-self: self-end;
+    justify-self: self-end;
     color: white;
     cursor: pointer;
     border: none;

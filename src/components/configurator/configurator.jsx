@@ -1,6 +1,7 @@
 import React, { useReducer } from 'react';
 import classes from './configurator.module.css';
 import { useLocalStorage } from '../../providers/local_storage_provider.jsx';
+import { ToggleButton } from '../toggle_button/toggle_button.jsx';
 
 function reducer(state, action) {
 	switch (action.type) {
@@ -63,7 +64,7 @@ export const Configurator = ({ onSubmit }) => {
 				</label>
 				<label className={classes.label} htmlFor={'businessId'}>
 					<input
-						className={classes.input}
+						className={`${classes.input} ${classes.textInput}`}
 						type='text'
 						name='businessId'
 						list='businessIds'
@@ -84,22 +85,31 @@ export const Configurator = ({ onSubmit }) => {
 					</datalist>
 				</label>
 				<label className={classes.label} htmlFor={'refonte'}>
-					<input
-						className={classes.input}
-						type={'checkbox'}
-						onChange={e =>
+					<ToggleButton
+						enabled={!!refonte}
+						onClick={enabled =>
 							dispatch({
 								type: 'REFONTE_HAS_CHANGED',
-								payload: e.target.checked
+								payload: enabled
 							})
 						}
-						checked={refonte}
-						name={'refonte'}
 					/>
+					{/*<input*/}
+					{/*	className={classes.input}*/}
+					{/*	type={'checkbox'}*/}
+					{/*	onChange={e =>*/}
+					{/*		dispatch({*/}
+					{/*			type: 'REFONTE_HAS_CHANGED',*/}
+					{/*			payload: e.target.checked*/}
+					{/*		})*/}
+					{/*	}*/}
+					{/*	checked={refonte}*/}
+					{/*	name={'refonte'}*/}
+					{/*/>*/}
 				</label>
 
 				<button className={classes.submitButton} onClick={onClick}>
-					Go !
+					🚀
 				</button>
 			</form>
 		</fieldset>
