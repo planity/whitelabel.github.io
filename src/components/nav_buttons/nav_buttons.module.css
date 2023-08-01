@@ -1,0 +1,66 @@
+.navButtonContainer {
+    display: grid;
+    grid: 1fr/1fr repeat(4, auto);
+    padding: 16px 40px;
+    flex-direction: row;
+    gap: 32px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--dark_background);
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.mainLink {
+    font-family: "Chakra Petch", "ReadablePixels", system-ui;
+    font-size: 1em;
+    width: max-content;
+    text-decoration: none;
+    position: relative;
+    color: white;
+    /*background: linear-gradient(0, #ee7752, #e73c7e, #23a6d5, #23d5ab, #23d5ab, #23a6d5, #e73c7e, #ee7752);*/
+    background-color: var(--dark_background);
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.links {
+    font-family: "Chakra Petch", "ReadablePixels", system-ui;
+    font-size: 1em;
+    width: unset;
+    text-decoration: none;
+    position: relative;
+    color: #000000;
+}
+
+.links:last-child{
+    color: red;
+}
+
+.links > span {
+    position: absolute;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-left: 8px;
+    rotate: 15deg;
+}
+
+.links:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+
+    background-color: #000000;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.links:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+

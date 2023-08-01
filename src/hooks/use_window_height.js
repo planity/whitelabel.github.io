@@ -1,8 +1,8 @@
 import { useSyncExternalStore } from 'react';
 
 export const useWindowHeight = () => {
-	const height = useSyncExternalStore(subscribe, getSnapshot);
-	return { height };
+	// const height = useSyncExternalStore(subscribe, getSnapshot);
+	return { height: 1000 };
 };
 
 function subscribe(callback) {

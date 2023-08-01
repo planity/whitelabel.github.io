@@ -26,6 +26,15 @@
     animation: gradient 20s linear infinite;
 }
 
+@font-face {
+    font-family: "Handjet";
+    src: url("./assets/Handjet-Light.ttf");
+}
+
+@font-face {
+    font-family: "Chakra Petch";
+    src: url("./assets/ChakraPetch-Medium.ttf");
+}
 
 @font-face {
     font-family: "Pixels";
@@ -47,75 +56,3 @@
     }
 }
 
-.container {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 42px;
-    flex: 1;
-    padding-left: 42px;
-    padding-right: 42px;
-}
-
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-    }
-}
-
-
-.links {
-    font-family: "ReadablePixels", system-ui;
-    font-size: 1.6em;
-    width: unset;
-    text-decoration: none;
-    position: relative;
-    color: white;
-}
-
-.links > span {
-    position: absolute;
-    font-size: 18px;
-    font-weight: bold;
-    text-decoration: underline;
-    margin-left: 8px;
-    rotate: 15deg;
-}
-
-.links:after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: white;
-    transform-origin: bottom right;
-    transition: transform 0.25s ease-out;
-}
-
-.links:hover:after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-}
-
-.backLinks {
-    font-family: "ReadablePixels", system-ui;
-    font-size: 1.6em;
-    position: absolute;
-    z-index: 20;
-    background-color: var(--dark_background);
-    border: 1px #7b7b7b solid;
-    padding: 12px;
-    border-radius: 12px;
-    top: 0;
-    left: 0;
-    text-align: left;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    margin: 24px
-}

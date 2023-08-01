@@ -1,5 +1,5 @@
 .backgroundContainer {
-    position: absolute;
+    position: fixed;
     /* Perspective is fun */
     /*perspective: 700px;*/
     /*perspective-origin: top;*/

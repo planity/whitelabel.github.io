@@ -6,7 +6,7 @@ import { ResetButton } from '../reset_button/reset_button.jsx';
 import { useLocalStorage } from '../../providers/local_storage_provider.jsx';
 import { useWindowHeight } from '../../hooks/use_window_height.js';
 import { MainText } from '../main_text/main_text.jsx';
-import { MpaButtons } from '../mpa_buttons/mpa_buttons.jsx';
+import { NavButtons } from '../nav_buttons/nav_buttons.jsx';
 
 const setWhiteLabel = ({ businessId, environment, countryCode, refonte }) => {
 	const { moduleType } = window;
@@ -20,7 +20,13 @@ const setWhiteLabel = ({ businessId, environment, countryCode, refonte }) => {
 			moduleType === 'account' && document.getElementById('accountContainer'),
 		appointmentContainer:
 			moduleType === 'appointment' &&
-			document.getElementById('appointmentContainer')
+			document.getElementById('appointmentContainer'),
+		onlineShopContainer:
+			moduleType === 'onlineShop' &&
+			document.getElementById('onlineShopContainer'),
+		giftVoucherContainer:
+			moduleType === 'giftVoucher' &&
+			document.getElementById('giftVoucherContainer')
 	};
 	addScriptToDOM(
 		`https://d2skjte8udjqxw.cloudfront.net/widget/${environment}${
@@ -47,6 +53,8 @@ export const App = () => {
 		() => !!businessId && !!environment && [false, true].includes(refonte),
 		[businessId, environment, countryCode, refonte]
 	);
+	const isMPA = !!window.moduleType;
+
 	const onSubmit = () => {
 		setTimeout(() => {
 			location.reload();
@@ -60,10 +68,10 @@ export const App = () => {
 		}
 	}, [hasAWidgetSetUp, businessId, environment, countryCode, refonte]);
 	return (
-		<div className={classes.container} style={{ height }}>
+		<div className={classes.container}>
 			<AwesomeGrid />
 
-			{hasAWidgetSetUp && <MainText />}
+			{<MainText />}
 
 			<ResetButton
 				onClick={() => {
@@ -71,16 +79,19 @@ export const App = () => {
 					location.reload();
 				}}
 			/>
-			<div className={classes.content}>
-				<div className={classes.wlMainContainer}>
-					<MpaButtons />
+			{hasAWidgetSetUp && (
+				<div className={classes.content}>
+					<div className={classes.wlMainContainer}>
+						<NavButtons isMPA={isMPA} />
 
-					<div className={classes.wlContainer} id={'planity-container'} />
-					<div className={classes.wlContainer} id={'accountContainer'} />
-					<div className={classes.wlContainer} id={'appointmentContainer'} />
+						<div className={classes.wlContainer} id={'planity-container'} />
+						<div className={classes.wlContainer} id={'accountContainer'} />
+						<div className={classes.wlContainer} id={'giftVoucherContainer'} />
+						<div className={classes.wlContainer} id={'onlineShopContainer'} />
+					</div>
 				</div>
-				<Configurator onSubmit={onSubmit} />
-			</div>
+			)}
+			<Configurator onSubmit={onSubmit} />
 		</div>
 	);
 };
