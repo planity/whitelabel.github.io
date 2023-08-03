@@ -7,6 +7,7 @@ import { useLocalStorage } from '../../providers/local_storage_provider.jsx';
 import { useWindowHeight } from '../../hooks/use_window_height.js';
 import { MainText } from '../main_text/main_text.jsx';
 import { NavButtons } from '../nav_buttons/nav_buttons.jsx';
+import { Landing } from '../landing/landing.jsx';
 
 const setWhiteLabel = ({ businessId, environment, countryCode, refonte }) => {
 	// Pretty sensitive actually 😕
@@ -79,8 +80,8 @@ export const App = () => {
 					location.reload();
 				}}
 			/>
-			{hasAWidgetSetUp && (
-				<div className={classes.content}>
+			<div className={classes.content}>
+				{hasAWidgetSetUp ? (
 					<div className={classes.wlMainContainer}>
 						<NavButtons isMPA={window.isMPA} />
 
@@ -90,8 +91,10 @@ export const App = () => {
 						<div className={classes.wlContainer} id={'giftVoucherContainer'} />
 						<div className={classes.wlContainer} id={'onlineShopContainer'} />
 					</div>
-				</div>
-			)}
+				) : (
+					<Landing />
+				)}
+			</div>
 			<Configurator onSubmit={onSubmit} />
 		</div>
 	);

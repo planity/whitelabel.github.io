@@ -2,6 +2,7 @@ import React, { useReducer } from 'react';
 import classes from './configurator.module.css';
 import { useLocalStorage } from '../../providers/local_storage_provider.jsx';
 import { ToggleButton } from '../toggle_button/toggle_button.jsx';
+import { Coin } from './coin.jsx';
 
 function reducer(state, action) {
 	switch (action.type) {
@@ -109,7 +110,10 @@ export const Configurator = ({ onSubmit }) => {
 				</label>
 
 				<button className={classes.submitButton} onClick={onClick}>
-					🚀
+					START
+					<div className={classes.rotatingIcon}>
+						<Coin />
+					</div>
 				</button>
 			</form>
 		</fieldset>

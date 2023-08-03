@@ -71,6 +71,32 @@
     justify-self: self-end;
     color: white;
     cursor: pointer;
-    border: none;
+    border: 2px dashed white;
+    border-radius: 8px;
+    padding: 8px;
     background-color: rgba(0, 0, 0, 0);
+    display: inline-flex;
+    gap: 8px;
+    align-content: center;
+    font-weight: bold;
+}
+.submitButton:hover{
+    color: black;
+    background-color: white;
+    transition: all .5s;
+}
+
+.rotatingIcon {
+    width: 16px;
+    aspect-ratio: 1/1;
+    animation: rotate 1s linear infinite;;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotateY(0);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
 }

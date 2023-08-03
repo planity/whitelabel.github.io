@@ -1,0 +1,8 @@
+.landing {
+    height: 60vh;
+    background-color: #232327;
+    border: 1px solid white;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+}
