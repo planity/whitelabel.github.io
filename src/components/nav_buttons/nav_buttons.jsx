@@ -6,7 +6,7 @@ export const NavButtons = ({ isMPA }) => {
 		<div className={classes.navButtonContainer}>
 			{isMPA ? (
 				<>
-					<a className={classes.mainLink} href={'./'}>
+					<a className={classes.mainLink} href={'./index.html'}>
 						Activer mode "Single Page" 🚀
 					</a>
 					<a className={classes.links} href={'./multi_appointment.html'}>

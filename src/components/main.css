@@ -29,22 +29,22 @@
 
 @font-face {
     font-family: "Handjet";
-    src: url("./assets/Handjet-Light.ttf");
+    src: url("../../assets/Handjet-Light.ttf");
 }
 
 @font-face {
     font-family: "Chakra Petch";
-    src: url("./assets/ChakraPetch-Medium.ttf");
+    src: url("../../assets/ChakraPetch-Medium.ttf");
 }
 
 @font-face {
     font-family: "Pixels";
-    src: url("./assets/thirteen-pixels-font.ttf");
+    src: url("../../assets/thirteen-pixels-font.ttf");
 }
 
 @font-face {
     font-family: "ReadablePixels";
-    src: url("./assets/rainyhearts.ttf");
+    src: url("../../assets/rainyhearts.ttf");
 }
 
 

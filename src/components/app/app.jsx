@@ -9,7 +9,8 @@ import { MainText } from '../main_text/main_text.jsx';
 import { NavButtons } from '../nav_buttons/nav_buttons.jsx';
 
 const setWhiteLabel = ({ businessId, environment, countryCode, refonte }) => {
-	const { moduleType } = window;
+	// Pretty sensitive actually 😕
+	const moduleType = window.location.pathname.replace(/(\/|.html|multi_)/g, '');
 	window.planity = {
 		key: businessId,
 		options: {
@@ -22,20 +23,20 @@ const setWhiteLabel = ({ businessId, environment, countryCode, refonte }) => {
 			moduleType === 'appointment' &&
 			document.getElementById('appointmentContainer'),
 		onlineShopContainer:
-			moduleType === 'onlineShop' &&
+			moduleType === 'online_shop' &&
 			document.getElementById('onlineShopContainer'),
 		giftVoucherContainer:
-			moduleType === 'giftVoucher' &&
+			moduleType === 'gift_vouchers' &&
 			document.getElementById('giftVoucherContainer')
 	};
 	addScriptToDOM(
 		`https://d2skjte8udjqxw.cloudfront.net/widget/${environment}${
-			refonte ? '_refonte' : ''
+			refonte ? '/2' : ''
 		}/polyfills.latest.js`
 	);
 	addScriptToDOM(
 		`https://d2skjte8udjqxw.cloudfront.net/widget/${environment}${
-			refonte ? '_refonte' : ''
+			refonte ? '/2' : ''
 		}/app.latest.js`
 	);
 };
@@ -53,7 +54,6 @@ export const App = () => {
 		() => !!businessId && !!environment && [false, true].includes(refonte),
 		[businessId, environment, countryCode, refonte]
 	);
-	const isMPA = !!window.moduleType;
 
 	const onSubmit = () => {
 		setTimeout(() => {
@@ -71,7 +71,7 @@ export const App = () => {
 		<div className={classes.container}>
 			<AwesomeGrid />
 
-			{<MainText />}
+			<MainText />
 
 			<ResetButton
 				onClick={() => {
@@ -82,10 +82,11 @@ export const App = () => {
 			{hasAWidgetSetUp && (
 				<div className={classes.content}>
 					<div className={classes.wlMainContainer}>
-						<NavButtons isMPA={isMPA} />
+						<NavButtons isMPA={window.isMPA} />
 
 						<div className={classes.wlContainer} id={'planity-container'} />
 						<div className={classes.wlContainer} id={'accountContainer'} />
+						<div className={classes.wlContainer} id={'appointmentContainer'} />
 						<div className={classes.wlContainer} id={'giftVoucherContainer'} />
 						<div className={classes.wlContainer} id={'onlineShopContainer'} />
 					</div>
