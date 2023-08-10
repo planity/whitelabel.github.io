@@ -1,14 +1,19 @@
 
 .resetButton {
-    --border-size: 1px;
+    --overflow-size: -2px;
+
+    position: relative;
     cursor: pointer;
+    user-select: none;
     padding: 10px 20px;
-    border: var(--border-size) dotted transparent;
-    color: white;
+    background-color: #232327;
+    border-radius: calc(10px + var(--overflow-size));
+    transform-style: preserve-3d; /* relates to transform: translateZ(-1px); later on 🤷 */
+    transition: all .5s;
 }
 
 .enabled {
-    position: relative;
+    color: white;
 }
 
 .disabled {
@@ -16,30 +21,37 @@
 }
 
 .enabled::before {
+    transform: translateZ(-1px);
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border: 2px solid #23c5b9;
-    transition: all .5s;
-    animation: clippath .4s 1 linear;
-    border-radius: 10px;
-}
-@keyframes clippath {
-    0%,
-    100% {
-        clip-path: inset(0 0 98% 0);
-    }
+    top: var(--overflow-size);
+    left: var(--overflow-size);
+    right:  var(--overflow-size);
+    bottom:  var(--overflow-size);
+    background: linear-gradient(113deg, rgb(251, 250, 205) 24.4%, rgb(247, 163, 205) 53.7%, rgb(141, 66, 243) 99.2%);
+    background-size: 300%;
 
+    animation: gradient 1s ease-in-out 1 forwards, gradient 4s 2s ease-in-out infinite;
+
+    background-position-x: 0;
+    background-position-y: 0;
+    border-radius: 10px;
+    z-index: -1;
+}
+@keyframes gradient {
+    0% {
+        background-position: 0 0;
+    }
     25% {
-        clip-path: inset(0 98% 0 0);
+        background-position: 100% 0;
     }
     50% {
-        clip-path: inset(98% 0 0 0);
+        background-position: 100% 100%;
     }
     75% {
-        clip-path: inset(0 0 0 98%);
+        background-position: 0 100%;
+    }
+    100% {
+        background-position: 0 0;
     }
 }

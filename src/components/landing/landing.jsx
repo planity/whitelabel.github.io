@@ -1,6 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classes from './landing.module.css';
+import { ResetButton } from '../reset_button/reset_button.jsx';
+import { ToggleButton } from '../toggle_button/toggle_button.jsx';
 
 export const Landing = () => {
-	return <div className={classes.landing}>yes yes yse </div>;
+	const [isEnabled, setIsEnabled] = useState(true);
+	return (
+		<div className={classes.landing}>
+			<ToggleButton onClick={() => setIsEnabled(a => !a)} enabled={isEnabled} />
+		</div>
+	);
 };
