@@ -8,28 +8,9 @@
     transition: all 1s ease;
 }
 
-.link {
-    display: flex;
-    color: white;
-    background-color: black;
-    /*width: 200px;*/
-    /*height: 40px;*/
-;
-}
-
 .wlMainContainer {
     position: relative;
-
-    /*z-index: 10;*/
     flex: 1;
-    /*margin: 32px auto;*/
-    /*border-radius: 16px;*/
-    /*animation: 2s fadein 2s backwards;*/
-    /*background-color: rgba(190, 190, 190, 0.96);*/
-    /*width: calc(100% - 24px);*/
-    /*max-width: 960px;*/
-    /*min-height: unset;*/
-
 }
 
 .content {
@@ -37,7 +18,7 @@
     display: grid;
     background-color: #fffffffa;
     grid: 1fr/1fr;
-    margin: 64px auto;
+    margin: 64px auto 0;
     width: 100%;
     max-width: 90vw;
     height: auto;

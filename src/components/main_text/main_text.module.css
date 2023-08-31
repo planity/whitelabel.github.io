@@ -3,7 +3,7 @@
     height: 4rem;
     text-align: center;
     color: white;
-    font: normal normal normal normal 3em/48px "Pixels", system-ui;
+    font: normal normal normal normal 3em/48px var(--font1), system-ui;
     white-space: nowrap;
     z-index: 10;
     background: linear-gradient(to bottom, rgb(20, 20, 20, .8) 30%, transparent);

@@ -9,7 +9,7 @@ export const ResetButton = ({ onClick }) => {
 				onClick();
 			}}
 		>
-			Réinitialiser la marque blanche
+			RESET
 		</div>
 	);
 };

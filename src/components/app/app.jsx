@@ -4,7 +4,6 @@ import { Configurator } from '../configurator/configurator.jsx';
 import classes from './app.module.css';
 import { ResetButton } from '../reset_button/reset_button.jsx';
 import { useLocalStorage } from '../../providers/local_storage_provider.jsx';
-import { useWindowHeight } from '../../hooks/use_window_height.js';
 import { MainText } from '../main_text/main_text.jsx';
 import { NavButtons } from '../nav_buttons/nav_buttons.jsx';
 import { Landing } from '../landing/landing.jsx';
@@ -61,7 +60,6 @@ export const App = () => {
 			location.reload();
 		}, 500);
 	};
-	const { height } = useWindowHeight();
 
 	useEffect(() => {
 		if (hasAWidgetSetUp) {

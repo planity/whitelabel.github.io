@@ -3,6 +3,7 @@ import classes from './configurator.module.css';
 import { useLocalStorage } from '../../providers/local_storage_provider.jsx';
 import { ToggleButton } from '../toggle_button/toggle_button.jsx';
 import { Coin } from './coin.jsx';
+import businesses from './businesses.json';
 
 function reducer(state, action) {
 	switch (action.type) {
@@ -23,7 +24,7 @@ function initialState({ businessId, environment, countryCode, refonte }) {
 	return {
 		businessId: businessId || '',
 		environment: environment || 'lab',
-		refonte: !!refonte || false
+		refonte: [true, false].includes(refonte) ? !!refonte : true
 	};
 }
 
@@ -31,7 +32,6 @@ export const Configurator = ({ onSubmit }) => {
 	const localStorageInitialState = useLocalStorage();
 	const [{ businessId, environment, countryCode, refonte }, dispatch] =
 		useReducer(reducer, localStorageInitialState, initialState);
-
 	const onClick = e => {
 		e.preventDefault();
 		localStorage.setItem('businessId', businessId);
@@ -79,10 +79,11 @@ export const Configurator = ({ onSubmit }) => {
 						placeholder={'Business Id'}
 					/>
 					<datalist id='businessIds'>
-						<option value={'saco'} label={'Saco'}>
-							Saco
-						</option>
-						<option value='-LqHElRfcHDuDZllMFy6'>A l'arrache</option>
+						{businesses.map(({ objectID, name }) => (
+							<option value={objectID} label={name} key={objectID}>
+								{name}
+							</option>
+						))}
 					</datalist>
 				</label>
 				<label className={classes.label} htmlFor={'refonte'}>
@@ -95,18 +96,6 @@ export const Configurator = ({ onSubmit }) => {
 							})
 						}
 					/>
-					{/*<input*/}
-					{/*	className={classes.input}*/}
-					{/*	type={'checkbox'}*/}
-					{/*	onChange={e =>*/}
-					{/*		dispatch({*/}
-					{/*			type: 'REFONTE_HAS_CHANGED',*/}
-					{/*			payload: e.target.checked*/}
-					{/*		})*/}
-					{/*	}*/}
-					{/*	checked={refonte}*/}
-					{/*	name={'refonte'}*/}
-					{/*/>*/}
 				</label>
 
 				<button className={classes.submitButton} onClick={onClick}>

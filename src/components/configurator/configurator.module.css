@@ -6,7 +6,7 @@
     color: white;
     z-index: 100;
     border: 1px solid white;
-    box-shadow: 0 0 20px 7px rgba(0,0,0,0.4);
+    box-shadow: 0 0 20px 7px rgba(0, 0, 0, 0.4);
     border-radius: 8px;
     font-size: 1.4rem;
     padding: 12px;
@@ -21,16 +21,30 @@
 .form {
     display: grid;
     place-items: center flex-start;
-    grid-template-columns: min-content min-content min-content auto;
-    grid-auto-rows: 1fr;
+    grid: 1fr/min-content min-content min-content auto;
     padding: 0 12px;
     gap: 22px;
+    font-family: var(--font2);
+
+}
+
+@media only screen and (max-width: 768px) {
+    .form {
+        grid: min-content min-content min-content auto /1fr 1fr;
+        gap: 8px
+    }
+}
+@media only screen and (max-width: 480px) {
+    .form {
+        grid: repeat(4, min-content) / 1fr;
+        gap: 8px
+    }
 }
 
 .title {
     font-size: 22px;
     color: white;
-    font-family: "Pixels", system-ui;
+    font-family: var(--font1);
     transform: translatey(-0%);
     padding-left: 10px;
     padding-right: 10px;
@@ -42,6 +56,7 @@
     background-color: rgb(35, 35, 39);
     border-radius: 8px;
 }
+
 .label {
     min-width: 200px;
     width: 100%;
@@ -50,19 +65,20 @@
     gap: 12px;
     font-size: 16px;
 }
+
 .input {
     appearance: auto;
     padding: 4px;
     height: 22px;
     width: 100%;
-    font:inherit;
+    font: inherit;
     background-color: transparent;
     color: white;
     border-bottom: 1px solid white;
     border-radius: 0;
 }
 
-.input::placeholder{
+.input::placeholder {
     color: white;
 
 }
@@ -71,16 +87,18 @@
     justify-self: self-end;
     color: white;
     cursor: pointer;
-    border: 2px dashed white;
     border-radius: 8px;
     padding: 8px;
     background-color: rgba(0, 0, 0, 0);
     display: inline-flex;
     gap: 8px;
     align-content: center;
+    font-family: var(--font2);
     font-weight: bold;
+    white-space: nowrap;
 }
-.submitButton:hover{
+
+.submitButton:hover {
     color: black;
     background-color: white;
     transition: all .5s;
