@@ -11,5 +11,5 @@ function subscribe(callback) {
 }
 
 function getSnapshot() {
-	return document.body.clientWidth;
+	return window.innerWidth;
 }

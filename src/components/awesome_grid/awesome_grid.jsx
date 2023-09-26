@@ -11,7 +11,6 @@ export const AwesomeGrid = () => {
 	const columns = Math.floor(width / SIZE);
 	const rows = Math.floor(height / SIZE);
 
-	console.log(rows * SIZE, height);
 	return (
 		<div className={classes.backgroundContainer}>
 			<div
