@@ -10,6 +10,7 @@
 
     cursor: default;
     user-select: none;
+    touch-action: none;
 }
 
 .stringContainer {
