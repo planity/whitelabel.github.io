@@ -4,6 +4,7 @@ import { useLocalStorage } from '../../providers/local_storage_provider.jsx';
 import { ToggleButton } from '../toggle_button/toggle_button.jsx';
 import { Coin } from './coin.jsx';
 import businesses from './businesses.json';
+import { Reset } from './reset.jsx';
 
 function reducer(state, action) {
 	switch (action.type) {
@@ -32,18 +33,28 @@ export const Configurator = ({ onSubmit }) => {
 	const localStorageInitialState = useLocalStorage();
 	const [{ businessId, environment, countryCode, refonte }, dispatch] =
 		useReducer(reducer, localStorageInitialState, initialState);
-	const onClick = e => {
-		e.preventDefault();
+
+	const submit = e => {
+		e?.preventDefault();
 		localStorage.setItem('businessId', businessId);
 		localStorage.setItem('environment', environment);
 		localStorage.setItem('refonte', JSON.stringify(!!refonte));
-		onSubmit();
+		setTimeout(() => {
+			location.reload();
+		}, 500);
+
+		if (typeof onSubmit === 'function') onSubmit();
 	};
+	async function reset(e) {
+		e?.preventDefault();
+		localStorage.clear();
+		location.reload();
+	}
 
 	return (
 		<fieldset className={classes.container}>
 			<legend className={classes.title}>Configurator</legend>
-			<form className={classes.form} onSubmit={onSubmit}>
+			<form className={classes.form} onSubmit={submit}>
 				<label className={classes.label} htmlFor={'environment'}>
 					<select
 						className={classes.input}
@@ -99,13 +110,18 @@ export const Configurator = ({ onSubmit }) => {
 						{!!refonte ? 'Refonte activée' : 'Refonte désactivée'}
 					</ToggleButton>
 				</label>
-
-				<button className={classes.submitButton} onClick={onClick}>
-					START
-					<div className={classes.rotatingIcon}>
-						<Coin />
-					</div>
-				</button>
+				<div className={classes.buttons}>
+					<button className={classes.resetButton} onClick={reset}>
+						<Reset color={'white'} size={16} />
+						RESET
+					</button>
+					<button className={classes.submitButton} onClick={submit}>
+						START
+						<div className={classes.rotatingIcon}>
+							<Coin />
+						</div>
+					</button>
+				</div>
 			</form>
 		</fieldset>
 	);

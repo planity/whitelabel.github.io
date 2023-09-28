@@ -1,7 +1,7 @@
 .container {
-    width: 100%;
+    width: min(512px, 95vw);
     margin: auto;
-    max-width: min(1180px, 95%);
+    min-width: 288px;
 
     color: white;
     z-index: 100;
@@ -12,29 +12,19 @@
     padding: 12px;
     background-color: rgb(35, 35, 39);
 
+
 }
 
 .form {
     display: grid;
-    place-items: center flex-start;
-    grid: 1fr/min-content min-content min-content auto;
+    place-items: center ;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+
     padding: 0 12px;
     gap: 22px;
     font-family: var(--font2);
 
-}
-
-@media only screen and (max-width: 768px) {
-    .form {
-        grid: min-content min-content min-content auto /1fr 1fr;
-        gap: 8px
-    }
-}
-@media only screen and (max-width: 480px) {
-    .form {
-        grid: repeat(4, min-content) / 1fr;
-        gap: 8px
-    }
 }
 
 .title {
@@ -79,25 +69,43 @@
 
 }
 
-.submitButton {
-    justify-self: self-end;
+.buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+    gap: 12px
+}
+.submitButton, .resetButton {
     color: white;
     cursor: pointer;
     border-radius: 8px;
-    padding: 8px;
     background-color: rgba(0, 0, 0, 0);
     display: inline-flex;
-    gap: 8px;
     align-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
     font-family: var(--font2);
+    font-size: 14px;
     font-weight: bold;
     white-space: nowrap;
 }
 
-.submitButton:hover {
+.resetButton {
+    font-weight: normal;
+}
+
+.submitButton:hover, .submitButton:active {
     color: black;
     background-color: white;
     transition: all .5s;
+}
+
+.resetButton:hover, .resetButton:active {
+    transition: all .5s;
+    background-color: #f84f4f;
 }
 
 .rotatingIcon {

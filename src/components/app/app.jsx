@@ -1,7 +1,6 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { AwesomeGrid } from '../awesome_grid/awesome_grid.jsx';
 import classes from './app.module.css';
-import { ResetButton } from '../reset_button/reset_button.jsx';
 import { useLocalStorage } from '../../providers/local_storage_provider.jsx';
 import { MainText } from '../main_text/main_text.jsx';
 import { NavButtons } from '../nav_buttons/nav_buttons.jsx';
@@ -52,20 +51,11 @@ function addScriptToDOM(url) {
 
 export const App = () => {
 	const { businessId, environment, countryCode, refonte } = useLocalStorage();
-	const { setModal, modal } = useModal();
+	const { openModal, isOpen } = useModal();
 	const hasAWidgetSetUp = useMemo(
 		() => !!businessId && !!environment && [false, true].includes(refonte),
 		[businessId, environment, countryCode, refonte]
 	);
-
-	useEffect(() => {
-		setModal(<Configurator onSubmit={onSubmit} />);
-	}, []);
-	const onSubmit = () => {
-		setTimeout(() => {
-			location.reload();
-		}, 500);
-	};
 
 	useEffect(() => {
 		if (hasAWidgetSetUp) {
@@ -78,12 +68,6 @@ export const App = () => {
 
 			<MainText />
 
-			<ResetButton
-				onClick={() => {
-					localStorage.clear();
-					location.reload();
-				}}
-			/>
 			<div className={classes.content}>
 				{hasAWidgetSetUp ? (
 					<div className={classes.wlMainContainer}>
@@ -100,8 +84,8 @@ export const App = () => {
 				)}
 			</div>
 			<ToggleButton
-				onClick={() => setModal(<Configurator onSubmit={onSubmit} />)}
-				enabled={!modal}
+				onClick={() => openModal(<Configurator />)}
+				enabled={!isOpen}
 				className={classes.configuratorButton}
 			>
 				CONFIGURATOR

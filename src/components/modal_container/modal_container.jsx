@@ -1,10 +1,14 @@
 import React from 'react';
 import classes from './modal_container.module.css';
 
-export const ModalContainer = ({ children }) => {
+export const ModalContainer = ({ isOpen, children }) => {
 	return (
-		<div className={classes.modalContainer}>
-			<div className={classes.modalContent}>{children}</div>
+		<div
+			className={`${classes.modalContainer} ${
+				isOpen ? classes.opened : classes.closed
+			}`}
+		>
+			{children}
 		</div>
 	);
 };

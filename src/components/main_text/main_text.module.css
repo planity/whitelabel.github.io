@@ -16,6 +16,7 @@
 }
 
 .mainText span {
+    font: inherit;
     display: inline-block;
     position: relative;
     animation-name: spawn-text, de-spawn-text, fade-in;
