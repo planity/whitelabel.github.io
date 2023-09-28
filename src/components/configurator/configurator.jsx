@@ -77,7 +77,7 @@ export const Configurator = ({ onSubmit }) => {
 				</label>
 				<label className={classes.label} htmlFor={'businessId'}>
 					<input
-						className={`${classes.input} ${classes.textInput}`}
+						className={classes.input}
 						type='text'
 						name='businessId'
 						list='businessIds'

@@ -25,15 +25,6 @@ export function LocalStorageContextProvider({ children }) {
 		</LocalStorageContext.Provider>
 	);
 }
-
-export const WithLocalStorage = LocalStorageContext.Consumer;
-export const withLocalStorage = WrappedComponent => props =>
-	(
-		<WithLocalStorage>
-			{contextProps => <WrappedComponent {...contextProps} {...props} />}
-		</WithLocalStorage>
-	);
-
 const subscribe = listener => {
 	window.addEventListener('storage', listener);
 	return () => {

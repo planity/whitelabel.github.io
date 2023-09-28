@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import classes from './awesome_grid.module.css';
 import { useWindowHeight } from '../../hooks/use_window_height.js';
 import { useWindowWidth } from '../../hooks/use_window_width.js';
