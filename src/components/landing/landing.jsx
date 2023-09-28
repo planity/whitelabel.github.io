@@ -35,6 +35,8 @@ export const Landing = () => {
 		setRandomString(generateRandomString());
 	}
 
+	const maskImage = `radial-gradient(calc(280px * 0.8) circle at ${pointerX}px ${pointerY}px,rgb(255 255 255) 50%, rgb(255 255 255 / 25%),transparent)`;
+
 	return (
 		<div
 			className={classes.landing}
@@ -46,7 +48,8 @@ export const Landing = () => {
 				ref={containerRef}
 				className={classes.stringContainer}
 				style={{
-					maskImage: `radial-gradient(calc(280px * 0.8) circle at ${pointerX}px ${pointerY}px,rgb(255 255 255) 50%, rgb(255 255 255 / 25%),transparent)`
+					'-webkit-mask-image': maskImage,
+					'maskImage': maskImage
 				}}
 			>
 				{randomString}

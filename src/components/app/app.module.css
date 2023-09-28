@@ -7,6 +7,7 @@
 .wlContainer {
     position: relative;
     transition: all 1s ease;
+    padding: 8px;
 }
 
 .wlMainContainer {
@@ -28,10 +29,16 @@
 
 .configuratorButton {
     width: 100%;
+    height: 32px;
     margin: auto;
-    max-width: min(200px, 90%);
+    max-width: min(256px, 90%);
     position: fixed;
     bottom: 8px;
     left: 0;
     right: 0;
+}
+@media only screen and (max-width: 768px) {
+    .configuratorButton {
+        height: 64px;
+    }
 }

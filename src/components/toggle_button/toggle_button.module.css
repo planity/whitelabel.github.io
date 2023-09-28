@@ -10,6 +10,10 @@
     border-radius: calc(10px + var(--overflow-size));
     transform-style: preserve-3d; /* relates to transform: translateZ(-1px); later on 🤷 */
     transition: all .5s;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .enabled {

@@ -78,7 +78,7 @@
     transition: transform 0.25s ease-out;
 }
 
-.links:hover:after {
+.links:hover:after , .links:active:after {
     transform: scaleX(1);
     transform-origin: bottom left;
 }
