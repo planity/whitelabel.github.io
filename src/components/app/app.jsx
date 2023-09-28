@@ -7,6 +7,8 @@ import { MainText } from '../main_text/main_text.jsx';
 import { NavButtons } from '../nav_buttons/nav_buttons.jsx';
 import { Landing } from '../landing/landing.jsx';
 import { ToggleButton } from '../toggle_button/toggle_button.jsx';
+import { useModal } from '../../providers/modal_provider.jsx';
+import { Configurator } from '../configurator/configurator.jsx';
 
 const setWhiteLabel = ({ businessId, environment, countryCode, refonte }) => {
 	// Pretty sensitive actually 😕
@@ -50,12 +52,15 @@ function addScriptToDOM(url) {
 
 export const App = () => {
 	const { businessId, environment, countryCode, refonte } = useLocalStorage();
-	const [isConfiguratorOpen, setIsConfiguratorOpen] = useState(false);
+	const { setModal, modal } = useModal();
 	const hasAWidgetSetUp = useMemo(
 		() => !!businessId && !!environment && [false, true].includes(refonte),
 		[businessId, environment, countryCode, refonte]
 	);
 
+	useEffect(() => {
+		setModal(<Configurator onSubmit={onSubmit} />);
+	}, []);
 	const onSubmit = () => {
 		setTimeout(() => {
 			location.reload();
@@ -95,8 +100,8 @@ export const App = () => {
 				)}
 			</div>
 			<ToggleButton
-				onClick={() => setIsConfiguratorOpen(true)}
-				enabled={!isConfiguratorOpen}
+				onClick={() => setModal(<Configurator onSubmit={onSubmit} />)}
+				enabled={!modal}
 				className={classes.configuratorButton}
 			>
 				CONFIGURATOR

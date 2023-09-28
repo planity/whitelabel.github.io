@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 export const ToggleButton = ({ enabled, onClick, className, children }) => {
 	return (
 		<div
-			className={`${classes.resetButton} ${
+			className={`${classes.toggleButton} ${
 				enabled ? classes.enabled : classes.disabled
 			} ${className || ''}`}
 			onClick={() => onClick(!enabled)}

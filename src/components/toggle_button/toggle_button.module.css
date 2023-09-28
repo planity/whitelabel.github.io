@@ -1,10 +1,8 @@
-
-.resetButton {
+.toggleButton {
     --overflow-size: -2px;
     font-family: var(--font2);
     text-align: center;
 
-    position: relative;
     cursor: pointer;
     user-select: none;
     padding: 8px 20px;
