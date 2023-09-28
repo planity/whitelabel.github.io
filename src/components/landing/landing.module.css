@@ -29,7 +29,7 @@
     width: 100%;
     position: absolute;
     background: radial-gradient(
-            rgba(35, 35, 39, 0.95) 0%,
+            /*rgba(35, 35, 39, 0.95) 0%,*/
             rgb(231, 60, 126),
             rgb(56 182 255),
             rgb(42 252 152),
