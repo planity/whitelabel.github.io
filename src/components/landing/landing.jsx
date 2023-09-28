@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import classes from './landing.module.css';
 import { useRect } from '../../hooks/use_rect.js';
+import throttle from 'lodash.throttle';
 
 const ALPHABET =
 	'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -11,6 +12,7 @@ function generateRandomString(size = 10000) {
 		.map(() => ALPHABET.charAt(Math.random() * ALPHABET.length))
 		.join('');
 }
+const throttledGenerateRandomString = throttle(generateRandomString, 80);
 
 export const Landing = () => {
 	const [randomString, setRandomString] = useState(generateRandomString);
@@ -32,7 +34,7 @@ export const Landing = () => {
 		regenerateRandomString();
 	}
 	function regenerateRandomString() {
-		setRandomString(generateRandomString());
+		setRandomString(throttledGenerateRandomString());
 	}
 
 	const maskImage = `radial-gradient(calc(280px * 0.8) circle at ${pointerX}px ${pointerY}px,rgb(255 255 255) 50%, rgb(255 255 255 / 25%),transparent)`;
@@ -48,8 +50,8 @@ export const Landing = () => {
 				ref={containerRef}
 				className={classes.stringContainer}
 				style={{
-					'-webkit-mask-image': maskImage,
-					'maskImage': maskImage
+					WebkitMaskImage: maskImage,
+					maskImage: maskImage
 				}}
 			>
 				{randomString}
