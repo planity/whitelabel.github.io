@@ -9,14 +9,12 @@ import { ToggleButton } from '../toggle_button/toggle_button.jsx';
 import { useModal } from '../../providers/modal_provider.jsx';
 import { Configurator } from '../configurator/configurator.jsx';
 
-const setWhiteLabel = ({ businessId, environment, countryCode, refonte }) => {
+const setWhiteLabel = ({ businessId, environment, refonte }) => {
 	// Pretty sensitive actually 😕
 	const moduleType = window.location.pathname.replace(/(\/|.html|multi_)/g, '');
 	window.planity = {
 		key: businessId,
-		options: {
-			countryCode
-		},
+		options: {},
 		container: document.getElementById('planity-container'),
 		accountContainer:
 			moduleType === 'account' && document.getElementById('accountContainer'),
@@ -50,18 +48,18 @@ function addScriptToDOM(url) {
 }
 
 export const App = () => {
-	const { businessId, environment, countryCode, refonte } = useLocalStorage();
+	const { businessId, environment, refonte } = useLocalStorage();
 	const { openModal, isOpen } = useModal();
 	const hasAWidgetSetUp = useMemo(
 		() => !!businessId && !!environment && [false, true].includes(refonte),
-		[businessId, environment, countryCode, refonte]
+		[businessId, environment, refonte]
 	);
 
 	useEffect(() => {
 		if (hasAWidgetSetUp) {
-			setWhiteLabel({ businessId, environment, countryCode, refonte });
+			setWhiteLabel({ businessId, environment, refonte });
 		}
-	}, [hasAWidgetSetUp, businessId, environment, countryCode, refonte]);
+	}, [hasAWidgetSetUp, businessId, environment, refonte]);
 	return (
 		<div className={classes.container}>
 			<AwesomeGrid />

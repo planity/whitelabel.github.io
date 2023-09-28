@@ -12,8 +12,6 @@ function reducer(state, action) {
 			return { ...state, businessId: action.payload };
 		case 'ENVIRONMENT_HAS_CHANGED':
 			return { ...state, environment: action.payload };
-		case 'COUNTRY_CODE_HAS_CHANGED':
-			return { ...state, countryCode: action.payload };
 		case 'REFONTE_HAS_CHANGED':
 			return { ...state, refonte: action.payload };
 		default:
@@ -21,7 +19,7 @@ function reducer(state, action) {
 	}
 }
 
-function initialState({ businessId, environment, countryCode, refonte }) {
+function initialState({ businessId, environment, refonte }) {
 	return {
 		businessId: businessId || '',
 		environment: environment || 'lab',
@@ -31,8 +29,11 @@ function initialState({ businessId, environment, countryCode, refonte }) {
 
 export const Configurator = ({ onSubmit }) => {
 	const localStorageInitialState = useLocalStorage();
-	const [{ businessId, environment, countryCode, refonte }, dispatch] =
-		useReducer(reducer, localStorageInitialState, initialState);
+	const [{ businessId, environment, refonte }, dispatch] = useReducer(
+		reducer,
+		localStorageInitialState,
+		initialState
+	);
 
 	const submit = e => {
 		e?.preventDefault();
