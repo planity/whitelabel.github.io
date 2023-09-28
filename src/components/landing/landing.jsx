@@ -20,15 +20,27 @@ export const Landing = () => {
 	const containerRef = useRef(null);
 	const containerRect = useRect(containerRef);
 
-	function regenerateRandomString(event) {
+	function onTouchMove(event) {
+		const { clientX, clientY } = event.touches[0];
+		setPointerX(clientX - containerRect.x);
+		setPointerY(clientY - containerRect.y);
+		regenerateRandomString();
+	}
+	function onMouseMove(event) {
 		setPointerX(event.clientX - containerRect.x);
 		setPointerY(event.clientY - containerRect.y);
-
+		regenerateRandomString();
+	}
+	function regenerateRandomString() {
 		setRandomString(generateRandomString());
 	}
 
 	return (
-		<div className={classes.landing} onMouseMove={regenerateRandomString}>
+		<div
+			className={classes.landing}
+			onTouchMove={onTouchMove}
+			onMouseMove={onMouseMove}
+		>
 			<div className={classes.gradientContainer} />
 			<div
 				ref={containerRef}

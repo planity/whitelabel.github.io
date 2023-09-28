@@ -20,7 +20,7 @@
     opacity: 0;
     transition: opacity .2s ease-in-out;
 }
-.stringContainer:hover{
+.stringContainer:hover, .stringContainer:active {
     opacity: 1;
 }
 
