@@ -95,7 +95,9 @@ export const Configurator = ({ onSubmit }) => {
 								payload: enabled
 							})
 						}
-					/>
+					>
+						{!!refonte ? 'Refonte activée' : 'Refonte désactivée'}
+					</ToggleButton>
 				</label>
 
 				<button className={classes.submitButton} onClick={onClick}>

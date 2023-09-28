@@ -24,3 +24,13 @@
     height: auto;
     border-radius: 8px;
 }
+
+.configuratorButton {
+    width: 100%;
+    margin: auto;
+    max-width: min(200px, 90%);
+    position: fixed;
+    bottom: 8px;
+    left: 0;
+    right: 0;
+}

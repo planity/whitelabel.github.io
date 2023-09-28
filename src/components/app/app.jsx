@@ -1,12 +1,12 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { AwesomeGrid } from '../awesome_grid/awesome_grid.jsx';
-import { Configurator } from '../configurator/configurator.jsx';
 import classes from './app.module.css';
 import { ResetButton } from '../reset_button/reset_button.jsx';
 import { useLocalStorage } from '../../providers/local_storage_provider.jsx';
 import { MainText } from '../main_text/main_text.jsx';
 import { NavButtons } from '../nav_buttons/nav_buttons.jsx';
 import { Landing } from '../landing/landing.jsx';
+import { ToggleButton } from '../toggle_button/toggle_button.jsx';
 
 const setWhiteLabel = ({ businessId, environment, countryCode, refonte }) => {
 	// Pretty sensitive actually 😕
@@ -50,6 +50,7 @@ function addScriptToDOM(url) {
 
 export const App = () => {
 	const { businessId, environment, countryCode, refonte } = useLocalStorage();
+	const [isConfiguratorOpen, setIsConfiguratorOpen] = useState(false);
 	const hasAWidgetSetUp = useMemo(
 		() => !!businessId && !!environment && [false, true].includes(refonte),
 		[businessId, environment, countryCode, refonte]
@@ -93,7 +94,13 @@ export const App = () => {
 					<Landing />
 				)}
 			</div>
-			<Configurator onSubmit={onSubmit} />
+			<ToggleButton
+				onClick={() => setIsConfiguratorOpen(true)}
+				enabled={!isConfiguratorOpen}
+				className={classes.configuratorButton}
+			>
+				CONFIGURATOR
+			</ToggleButton>
 		</div>
 	);
 };
