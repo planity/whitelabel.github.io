@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import mpaPlugin from 'vite-plugin-mpa-plus';
+import autoprefixer from 'autoprefixer';
 
 // noinspection JSUnusedGlobalSymbols
 export default defineConfig({
@@ -36,5 +37,10 @@ export default defineConfig({
 			}
 		})
 	],
+	css: {
+		postcss: {
+			plugins: [autoprefixer({})]
+		}
+	},
 	build: { emptyOutDir: true }
 });

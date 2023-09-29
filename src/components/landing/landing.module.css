@@ -14,19 +14,23 @@
 }
 
 .stringContainer {
+    --pointerX: 0px;
+    --pointerY: 0px;
     color: white;
     font-family: var(--font2);
     font-size: 1em;
     text-align: justify;
     opacity: 0;
     transition: opacity .2s ease-in-out;
+    mask-image: radial-gradient(calc(280px * 0.8) circle at var(--pointerX) var(--pointerY),rgb(255 255 255) 50%, rgb(255 255 255 / 25%),transparent);
+    white-space: pre-wrap;
 }
 .stringContainer:hover, .stringContainer:active {
     opacity: 1;
 }
 
 .gradientContainer {
-    aspect-ratio: 1/1;
+    height: 100%;
     width: 100%;
     position: absolute;
     background: radial-gradient(
