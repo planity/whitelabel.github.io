@@ -3,13 +3,13 @@ import { AwesomeGrid } from '../awesome_grid/awesome_grid.jsx';
 import classes from './app.module.css';
 import { useLocalStorage } from '../../providers/local_storage_provider.jsx';
 import { MainText } from '../main_text/main_text.jsx';
-import { NavButtons } from '../nav_buttons/nav_buttons.jsx';
 import { Landing } from '../landing/landing.jsx';
 import { ToggleButton } from '../toggle_button/toggle_button.jsx';
 import { useModal } from '../../providers/modal_provider.jsx';
 import { Configurator } from '../configurator/configurator.jsx';
+import { Widget } from '../widget/widget.jsx';
 
-const setWhiteLabel = ({ businessId, environment, refonte }) => {
+const setWidget = ({ businessId, environment, refonte }) => {
 	// Pretty sensitive actually 😕
 	const moduleType = window.location.pathname.replace(/(\/|.html|multi_)/g, '');
 	window.planity = {
@@ -57,7 +57,7 @@ export const App = () => {
 
 	useEffect(() => {
 		if (hasAWidgetSetUp) {
-			setWhiteLabel({ businessId, environment, refonte });
+			setWidget({ businessId, environment, refonte });
 		}
 	}, [hasAWidgetSetUp, businessId, environment, refonte]);
 	return (
@@ -67,19 +67,7 @@ export const App = () => {
 			<MainText />
 
 			<div className={classes.content}>
-				{hasAWidgetSetUp ? (
-					<div className={classes.wlMainContainer}>
-						<NavButtons isMPA={isMPA} />
-
-						<div className={classes.wlContainer} id={'planity-container'} />
-						<div className={classes.wlContainer} id={'accountContainer'} />
-						<div className={classes.wlContainer} id={'appointmentContainer'} />
-						<div className={classes.wlContainer} id={'giftVoucherContainer'} />
-						<div className={classes.wlContainer} id={'onlineShopContainer'} />
-					</div>
-				) : (
-					<Landing />
-				)}
+				{hasAWidgetSetUp ? <Widget /> : <Landing />}
 			</div>
 			<ToggleButton
 				onClick={() => openModal(<Configurator />)}

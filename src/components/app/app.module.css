@@ -4,17 +4,6 @@
     width: 100%;
 }
 
-.wlContainer {
-    position: relative;
-    transition: all 1s ease;
-    padding: 8px;
-}
-
-.wlMainContainer {
-    position: relative;
-    flex: 1;
-}
-
 .content {
     position: relative;
     display: grid;

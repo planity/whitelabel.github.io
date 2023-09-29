@@ -1,5 +1,5 @@
 :root {
-    --dark_background: rgb(20, 20, 20);
+    --dark_background: #141414;
     --perspective_size: 700px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
