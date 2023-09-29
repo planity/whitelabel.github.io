@@ -48,7 +48,7 @@ function addScriptToDOM(url) {
 }
 
 export const App = () => {
-	const { businessId, environment, refonte } = useLocalStorage();
+	const { businessId, environment, refonte, isMPA } = useLocalStorage();
 	const { openModal, isOpen } = useModal();
 	const hasAWidgetSetUp = useMemo(
 		() => !!businessId && !!environment && [false, true].includes(refonte),
@@ -69,7 +69,7 @@ export const App = () => {
 			<div className={classes.content}>
 				{hasAWidgetSetUp ? (
 					<div className={classes.wlMainContainer}>
-						<NavButtons isMPA={window.isMPA} />
+						<NavButtons isMPA={isMPA} />
 
 						<div className={classes.wlContainer} id={'planity-container'} />
 						<div className={classes.wlContainer} id={'accountContainer'} />

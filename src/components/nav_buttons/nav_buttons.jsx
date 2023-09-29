@@ -4,28 +4,21 @@ import classes from './nav_buttons.module.css';
 export const NavButtons = ({ isMPA }) => {
 	return (
 		<div className={classes.navButtonContainer}>
-			{isMPA ? (
+			{isMPA && (
 				<>
-					<a className={classes.mainLink} href={'./index.html'}>
-						Activer mode "Single Page" 🚀
-					</a>
-					<a className={classes.links} href={'./multi_appointment.html'}>
+					<a className={classes.links} href={'./multi_appointment'}>
 						Prendre RDV
 					</a>
-					<a className={classes.links} href={'./multi_gift_vouchers.html'}>
+					<a className={classes.links} href={'./multi_gift_vouchers'}>
 						Cartes cadeaux
 					</a>
-					<a className={classes.links} href={'./multi_online_shop.html'}>
+					<a className={classes.links} href={'./multi_online_shop'}>
 						Boutique en ligne
 					</a>
-					<a className={classes.links} href={'./multi_account.html'}>
+					<a className={classes.links} href={'./multi_account'}>
 						Mon compte
 					</a>
 				</>
-			) : (
-				<a className={classes.mainLink} href={'./multi_appointment.html'}>
-					Activer mode "Multi Page" 🚀
-				</a>
 			)}
 		</div>
 	);

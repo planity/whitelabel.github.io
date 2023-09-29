@@ -14,10 +14,15 @@ export function LocalStorageContextProvider({ children }) {
 	const refonte = useSyncExternalStore(subscribe, () =>
 		JSON.parse(localStorage.getItem('refonte'))
 	);
+
+	const isMPA = useSyncExternalStore(subscribe, () =>
+		JSON.parse(localStorage.getItem('isMPA'))
+	);
 	const state = {
 		businessId,
 		environment,
-		refonte
+		refonte,
+		isMPA
 	};
 	return (
 		<LocalStorageContext.Provider value={state}>

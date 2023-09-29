@@ -1,6 +1,7 @@
 .toggleButton {
     --overflow-size: -2px;
     font-family: var(--font2);
+    font-size: 14px;
     text-align: center;
 
     cursor: pointer;

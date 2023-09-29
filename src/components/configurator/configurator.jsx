@@ -14,22 +14,25 @@ function reducer(state, action) {
 			return { ...state, environment: action.payload };
 		case 'REFONTE_HAS_CHANGED':
 			return { ...state, refonte: action.payload };
+		case 'MPA_HAS_CHANGED':
+			return { ...state, isMPA: !state.isMPA };
 		default:
 			console.error('unhandled action', action);
 	}
 }
 
-function initialState({ businessId, environment, refonte }) {
+function initialState({ businessId, environment, refonte, isMPA }) {
 	return {
 		businessId: businessId || '',
 		environment: environment || 'lab',
-		refonte: [true, false].includes(refonte) ? !!refonte : true
+		refonte: [true, false].includes(refonte) ? !!refonte : true,
+		isMPA: [true, false].includes(isMPA) ? !!isMPA : true
 	};
 }
 
 export const Configurator = ({ onSubmit }) => {
 	const localStorageInitialState = useLocalStorage();
-	const [{ businessId, environment, refonte }, dispatch] = useReducer(
+	const [{ businessId, environment, refonte, isMPA }, dispatch] = useReducer(
 		reducer,
 		localStorageInitialState,
 		initialState
@@ -40,6 +43,7 @@ export const Configurator = ({ onSubmit }) => {
 		localStorage.setItem('businessId', businessId);
 		localStorage.setItem('environment', environment);
 		localStorage.setItem('refonte', JSON.stringify(!!refonte));
+		localStorage.setItem('isMPA', JSON.stringify(!!isMPA));
 		setTimeout(() => {
 			location.reload();
 		}, 500);
@@ -49,14 +53,15 @@ export const Configurator = ({ onSubmit }) => {
 	async function reset(e) {
 		e?.preventDefault();
 		localStorage.clear();
-		location.reload();
+		location.replace('./');
 	}
 
 	return (
 		<fieldset className={classes.container}>
 			<legend className={classes.title}>Configurator</legend>
 			<form className={classes.form} onSubmit={submit}>
-				<label className={classes.label} htmlFor={'environment'}>
+				<label className={classes.labelContainer} htmlFor={'environment'}>
+					<p className={classes.label}>Env</p>
 					<select
 						className={classes.input}
 						onChange={e =>
@@ -75,7 +80,8 @@ export const Configurator = ({ onSubmit }) => {
 						<option value={'production'}>Production</option>
 					</select>
 				</label>
-				<label className={classes.label} htmlFor={'businessId'}>
+				<label className={classes.labelContainer} htmlFor={'businessId'}>
+					<p className={classes.label}>BusinessId</p>
 					<input
 						className={classes.input}
 						type='text'
@@ -98,7 +104,8 @@ export const Configurator = ({ onSubmit }) => {
 						))}
 					</datalist>
 				</label>
-				<label className={classes.label} htmlFor={'refonte'}>
+				<label className={classes.labelContainer} htmlFor={'refonte'}>
+					<p className={classes.label}>Refonte</p>
 					<ToggleButton
 						enabled={!!refonte}
 						onClick={enabled =>
@@ -108,7 +115,20 @@ export const Configurator = ({ onSubmit }) => {
 							})
 						}
 					>
-						{!!refonte ? 'Refonte activée' : 'Refonte désactivée'}
+						{!!refonte ? 'Activée' : 'Désactivée'}
+					</ToggleButton>
+				</label>
+				<label className={classes.labelContainer} htmlFor={'isMPA'}>
+					<p className={classes.label}>Mode</p>
+					<ToggleButton
+						enabled
+						onClick={() =>
+							dispatch({
+								type: 'MPA_HAS_CHANGED'
+							})
+						}
+					>
+						{!!isMPA ? 'Multi page' : 'Single Page'}
 					</ToggleButton>
 				</label>
 				<div className={classes.buttons}>
