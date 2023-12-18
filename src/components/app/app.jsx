@@ -15,7 +15,7 @@ const setWidget = ({ businessId, environment, refonte, isMPA }) => {
 	window.planity = {
 		key: businessId,
 		options: {
-			myAccountSlug: isMPA && '/multi_account'
+			myAccountSlug: isMPA && 'multi_account'
 		},
 		container: document.getElementById('planity-container'),
 		accountContainer:
