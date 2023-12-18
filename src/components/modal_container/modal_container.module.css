@@ -1,0 +1,19 @@
+.modalContainer {
+    position: absolute;
+    z-index: 3;
+    transition-duration: .5s;
+    transition-property: all;
+    overflow: hidden;
+    top: 32px
+}
+
+.opened {
+    transition-timing-function: var(--ease-in);
+    transform: translate(0, 0);
+    opacity: 1;
+}
+.closed {
+    transition-timing-function: var(--ease-out);
+    transform: translate(0, -100%);
+    opacity: 0;
+}

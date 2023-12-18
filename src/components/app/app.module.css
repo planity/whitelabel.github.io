@@ -1,0 +1,33 @@
+.container {
+    min-height: 100vh;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.content {
+    position: relative;
+    display: grid;
+    background-color: #fffffffa;
+    grid: 1fr/1fr;
+    margin: 64px auto 0;
+    width: 100%;
+    max-width: 90vw;
+    height: auto;
+    border-radius: 8px;
+}
+
+.configuratorButton {
+    width: 100%;
+    height: 32px;
+    margin: auto;
+    max-width: min(256px, 90%);
+    position: fixed;
+    bottom: 8px;
+    left: 0;
+    right: 0;
+}
+@media only screen and (max-width: 768px) {
+    .configuratorButton {
+        height: 64px;
+    }
+}

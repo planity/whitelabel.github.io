@@ -1,0 +1,136 @@
+.container {
+    width: min(512px, 95vw);
+    margin: auto;
+    min-width: 288px;
+
+    color: white;
+    z-index: 100;
+    border: 1px solid white;
+    box-shadow: 0 0 20px 7px rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
+    font-size: 1.4rem;
+    padding: 12px;
+    background-color: rgb(35, 35, 39);
+}
+
+.form {
+    display: grid;
+    place-items: center ;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+
+    padding: 0 12px;
+    gap: 22px;
+    font-family: var(--font2);
+
+}
+
+.title {
+    font-size: 22px;
+    color: white;
+    font-family: var(--font1);
+    transform: translatey(-0%);
+    padding-left: 8px;
+    padding-right: 8px;
+
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    margin: 8px 24px;
+    background-color: rgb(35, 35, 39);
+    border-radius: 8px;
+}
+
+.labelContainer {
+    min-width: 256px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+@media only screen and (max-width: 480px) {
+    .labelContainer {
+        flex-direction: column;
+        gap: 8px;
+        align-items: flex-start;
+    }
+}
+
+.label {
+    font-size: 16px;
+    white-space: nowrap;
+    width: 100px;
+}
+
+.input {
+    font-size: 14px;
+    appearance: auto;
+    padding: 4px;
+    line-height: 24px;
+    width: 100%;
+    background-color: transparent;
+    color: white;
+    border-bottom: 1px solid white;
+    border-radius: 0;
+}
+
+.input::placeholder {
+    color: white;
+
+}
+
+.buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+    gap: 12px
+}
+.submitButton, .resetButton {
+    color: white;
+    cursor: pointer;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0);
+    display: inline-flex;
+    align-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    font-family: var(--font2);
+    font-size: 14px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.resetButton {
+    font-weight: normal;
+}
+
+.submitButton:hover, .submitButton:active {
+    color: black;
+    background-color: white;
+    transition: all .5s;
+}
+
+.resetButton:hover, .resetButton:active {
+    transition: all .5s;
+    background-color: #f84f4f;
+}
+
+.rotatingIcon {
+    width: 16px;
+    aspect-ratio: 1/1;
+    animation: rotate 1s linear infinite;;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotateY(0);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
+}

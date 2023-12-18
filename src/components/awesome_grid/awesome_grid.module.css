@@ -1,0 +1,53 @@
+.backgroundContainer {
+    position: fixed;
+    /* Perspective is fun */
+    /*perspective: 700px;*/
+    /*perspective-origin: top;*/
+    min-height: 100vh;
+
+}
+
+
+.background {
+    display: grid;
+    width: 100vw;
+    min-height: 100vh;
+
+    /*height: 100vh;*/
+    z-index: 0;
+    /* Perspective is really fun */
+    /*transform: rotateX(10deg) translateZ(1px) rotateX(30deg) scale(1.5);*/
+}
+
+.tile {
+    position: relative;
+}
+
+.tile:before {
+    content: "";
+    background-color: var(--dark_background);
+    position: absolute;
+    inset: 1px;
+    opacity: 1;
+    transition: opacity 1s;
+    animation: opacity-animation 4s alternate 1;
+}
+
+.tile:hover:before {
+    inset: 100%;
+    opacity: 0;
+    transition: opacity 0s;
+}
+
+
+@keyframes opacity-animation {
+    from {
+        opacity: 1;
+    }
+    50% {
+        opacity: .6;
+    }
+    to {
+        opacity: 1;
+    }
+}

@@ -1,0 +1,46 @@
+.landing {
+    height: 50vh;
+    background-color: #232327;
+    border: 1px solid white;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    position: relative;
+
+    cursor: default;
+    user-select: none;
+    touch-action: none;
+}
+
+.stringContainer {
+    --pointerX: 0px;
+    --pointerY: 0px;
+    color: white;
+    font-family: var(--font2);
+    font-size: 1em;
+    text-align: justify;
+    opacity: 0;
+    transition: opacity .2s ease-in-out;
+    mask-image: radial-gradient(calc(280px * 0.8) circle at var(--pointerX) var(--pointerY),rgb(255 255 255) 50%, rgb(255 255 255 / 25%),transparent);
+    white-space: pre-wrap;
+}
+.stringContainer:hover, .stringContainer:active {
+    opacity: 1;
+}
+
+.gradientContainer {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background: radial-gradient(
+            /*rgba(35, 35, 39, 0.95) 0%,*/
+            rgb(231, 60, 126),
+            rgb(56 182 255),
+            rgb(42 252 152),
+            rgb(35, 213, 171)
+    );
+    mix-blend-mode: darken;
+    pointer-events: none;
+    z-index: 3;
+}

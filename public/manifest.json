@@ -1,0 +1,21 @@
+{
+  "name": "91's",
+  "short_name": "91's",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#141414",
+  "background_color": "#141414",
+  "description": "91's",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

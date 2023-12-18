@@ -1,0 +1,176 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+    box-sizing: border-box;
+    color: inherit;
+}
+
+html {
+    word-break: break-word;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -webkit-text-size-adjust: none;
+    -webkit-tap-highlight-color: transparent;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+html,
+body {
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+caption,
+th,
+td {
+    text-align: left;
+}
+
+q,
+blockquote {
+    quotes: none;
+}
+
+q:before,
+q:after,
+blockquote:before,
+blockquote:after {
+    content: none;
+}
+
+small,
+sub,
+sup {
+    font-size: 0.83em;
+}
+
+sub {
+    vertical-align: sub;
+}
+
+sup {
+    vertical-align: super;
+}
+
+a img {
+    border: none;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+    display: block;
+}
+
+img,
+video {
+    display: flex;
+    max-width: 100%;
+    height: auto;
+}
+
+video {
+    width: 100%;
+}
+
+img {
+    pointer-events: none;
+    width: 100%;
+}
+
+a {
+    font-size: inherit;
+    line-height: inherit;
+    text-decoration: none;
+}
+
+a,
+button {
+    &:not(:disabled) {
+        cursor: pointer;
+    }
+}
+
+button {
+    background-color: transparent;
+    text-align: left;
+    font: inherit;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: 0;
+}
+
+input,
+textarea {
+    font: inherit;
+}
+
+textarea {
+    resize: none;
+}
+
+input[type='color'] {
+    border: 0;
+}
+
+input[disabled] {
+    background-color: transparent;
+}
+
+input:-webkit-autofill {
+    -webkit-background-clip: text;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+svg {
+    overflow: visible;
+}
+
+::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+*,
+*::after,
+*::before {
+    -webkit-user-drag: none;
+    -webkit-app-region: no-drag;
+}
+
+pre {
+    white-space: pre-wrap;
+}

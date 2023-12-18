@@ -1,0 +1,11 @@
+.widgetMainContainer {
+    position: relative;
+    flex: 1;
+}
+
+.widgetContainer {
+    position: relative;
+    transition: all 1s ease;
+    padding: 8px;
+}
+
