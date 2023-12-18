@@ -9,12 +9,14 @@ import { useModal } from '../../providers/modal_provider.jsx';
 import { Configurator } from '../configurator/configurator.jsx';
 import { Widget } from '../widget/widget.jsx';
 
-const setWidget = ({ businessId, environment, refonte }) => {
+const setWidget = ({ businessId, environment, refonte, isMPA }) => {
 	// Pretty sensitive actually 😕
 	const moduleType = window.location.pathname.replace(/(\/|.html|multi_)/g, '');
 	window.planity = {
 		key: businessId,
-		options: {},
+		options: {
+			myAccountSlug: isMPA && '/multi_account'
+		},
 		container: document.getElementById('planity-container'),
 		accountContainer:
 			moduleType === 'account' && document.getElementById('accountContainer'),
@@ -57,9 +59,9 @@ export const App = () => {
 
 	useEffect(() => {
 		if (hasAWidgetSetUp) {
-			setWidget({ businessId, environment, refonte });
+			setWidget({ businessId, environment, refonte, isMPA });
 		}
-	}, [hasAWidgetSetUp, businessId, environment, refonte]);
+	}, [hasAWidgetSetUp, businessId, environment, refonte, isMPA]);
 	return (
 		<div className={classes.container}>
 			<AwesomeGrid />
