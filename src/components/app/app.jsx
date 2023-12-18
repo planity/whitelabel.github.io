@@ -21,7 +21,8 @@ const setWidget = ({ businessId, environment, refonte, isMPA }) => {
 		accountContainer:
 			moduleType === 'account' && document.getElementById('accountContainer'),
 		appointmentContainer:
-			moduleType === 'appointment' &&
+			(isDefaultMPAPage({ moduleType, isMPA }) ||
+				moduleType === 'appointment') &&
 			document.getElementById('appointmentContainer'),
 		onlineShopContainer:
 			moduleType === 'online_shop' &&
@@ -41,6 +42,11 @@ const setWidget = ({ businessId, environment, refonte, isMPA }) => {
 		}/app.latest.js`
 	);
 };
+/**
+ * Used as a fallback, when having MPA and being on the website's root (URL is `/` so it's not possible to guess the page
+ * @return {boolean}
+ */
+const isDefaultMPAPage = ({ moduleType, isMPA }) => !moduleType && isMPA;
 
 function addScriptToDOM(url) {
 	const script = document.createElement('script');
