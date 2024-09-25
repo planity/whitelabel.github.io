@@ -4,8 +4,11 @@
 }
 
 .widgetContainer {
+    max-width: 90vw;
     position: relative;
     transition: all 1s ease;
     padding: 8px;
+    /* Fighting negative margins */
+    margin: 8px;
 }
 
